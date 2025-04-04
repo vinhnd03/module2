@@ -1,12 +1,15 @@
-package ss1_tong_quan_java.bai_tap.bai2;
+package ss1_tong_quan_java.bai_tap.bai2_chuyen_doi_tien;
 
 import java.util.Scanner;
 
 public class MoneyConverter {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("1. USD qua VND.\n2. VND qua USD.\nChọn mệnh giá bạn muốn đổi: ");
-        int chon = Integer.parseInt(scanner.nextLine());
+        int chon = 0;
+        do{
+            System.out.print("1. USD qua VND.\n2. VND qua USD.\nChọn mệnh giá bạn muốn đổi: ");
+             chon = Integer.parseInt(scanner.nextLine());
+        }while (chon != 1 && chon != 2);
         float tiGia = 24000;
         if (chon == 1) {
             System.out.print("Nhập USD: ");
