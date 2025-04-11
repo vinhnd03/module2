@@ -8,6 +8,7 @@ public class Circle {
     }
 
     public Circle(double radius) {
+
         this.radius = radius;
     }
 
@@ -16,6 +17,7 @@ public class Circle {
     }
 
     double getArea(){
+
         return Math.PI * Math.pow(this.radius, 2);
     }
 
