@@ -8,7 +8,7 @@ public class Main {
         stopWatch.start();
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Want to stop?");
+        System.out.println("Want to stop?");
         scanner.nextLine();
 
         stopWatch.stop();

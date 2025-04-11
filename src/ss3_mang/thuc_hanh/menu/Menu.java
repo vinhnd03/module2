@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Menu {
     public static void menu() {
         Scanner scanner = new Scanner(System.in);
+        StudentManagement studentManagement = new StudentManagement();
         int choice;
         do {
             System.out.println();
@@ -16,75 +17,50 @@ public class Menu {
             System.out.println("5. Search");
             System.out.println("6. Exit");
             System.out.println("=============================================");
-            System.out.print("Enter your choice: ");
+            System.out.print("Lựa chọn: ");
             try {
                 choice = Integer.parseInt(scanner.nextLine());
                 switch (choice) {
                     case 1:
-                        display();
+                        studentManagement.display();
+                        studentManagement.askForContinue();
                         break;
                     case 2:
-                        add();
+                        studentManagement.add();
+                        studentManagement.askForContinue();
                         break;
                     case 3:
-                        delete();
+                        studentManagement.delete();
+                        studentManagement.askForContinue();
                         break;
                     case 4:
-                        update();
+                        studentManagement.update();
+                        studentManagement.askForContinue();
                         break;
                     case 5:
-                        search();
+                        studentManagement.search();
+                        studentManagement.askForContinue();
                         break;
                     case 6:
-                        System.out.print("Press Y to confirm exit: ");
+                        System.out.print("Nhập Y để xác nhận thoát: ");
                         String exit = scanner.nextLine();
                         if (exit.toLowerCase().equals("y")) {
                             System.out.println("Goodbye!");
                             System.exit(0);
                         }
                     default:
-                        System.out.println("No choice!");
+                        System.out.println("Lựa chọn không hợp lệ!");
                         break;
                 }
             } catch (NumberFormatException message) {
-                System.out.println("Vui lòng nhập số!");
+                //System.out.println("Vui lòng nhập số!");
                 System.out.println("Lỗi: " + message.getMessage());
+                System.out.print("Enter để quay lại");
+                scanner.nextLine();
             }
-            System.out.print("Do you want to continue? (y/n): ");
 
-            do {
-                String conti = scanner.nextLine();
-                if (conti.toLowerCase().equals("y") || conti.equals("1")) {
-                    break;
-                } else if (conti.toLowerCase().equals("n") || conti.equals("0")) {
-                    System.exit(0);
-                } else {
-                    System.out.print("Please enter y or n: ");
-                }
-
-            } while (true);
 
         } while (true);
-    }
-
-    public static void display() {
-        System.out.println("Display");
-    }
-
-    public static void add() {
-        System.out.println("Add");
-    }
-
-    public static void delete() {
-        System.out.println("Delete");
-    }
-
-    public static void update() {
-        System.out.println("Update");
-    }
-
-    public static void search() {
-        System.out.println("Search");
     }
 
     public static void main(String[] args) {

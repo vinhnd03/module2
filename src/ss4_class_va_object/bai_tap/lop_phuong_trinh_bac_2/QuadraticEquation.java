@@ -39,7 +39,7 @@ public class QuadraticEquation {
     }
 
     public double getDiscriminant() {
-        return 2 * this.b - 4 * this.a * this.c;
+        return (this.b * this.b) - (4 * this.a * this.c);
     }
 
     public double getRoot1() {
