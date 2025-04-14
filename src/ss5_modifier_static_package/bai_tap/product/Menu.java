@@ -11,14 +11,14 @@ public class Menu {
         int choice;
         do {
             System.out.println();
-            System.out.println("============ [ MENU SẢN PHẨM ] =============");
+            System.out.println("============ [ MENU QL SẢN PHẨM ] =============");
             System.out.println("1. Hiển thị danh sách");
             System.out.println("2. Thêm sản phẩm");
             System.out.println("3. Xóa sản phẩm");
             System.out.println("4. Cập nhật sản phẩm");
             System.out.println("5. Tìm kiếm sản phẩm");
             System.out.println("6. Thoát");
-            System.out.println("============================================");
+            System.out.println("===============================================");
             System.out.print("Lựa chọn: ");
             try {
                 choice = Integer.parseInt(scanner.nextLine());
@@ -31,17 +31,20 @@ public class Menu {
                     case 2:
                         System.out.println("Thêm mới");
                         pm.add();
+                        pm.display();
                         pm.askForContinue();
                         break;
                     case 3:
                         System.out.println("Xóa theo id");
                         pm.delete();
+                        pm.display();
                         pm.askForContinue();
                         break;
 
                     case 4:
                         System.out.println("Cập nhật theo id");
                         pm.update();
+                        pm.display();
                         pm.askForContinue();
                         break;
                     case 5:

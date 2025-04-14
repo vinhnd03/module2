@@ -7,11 +7,11 @@ import java.util.Scanner;
 public class ProductManagement {
     private static Product[] products = new Product[100];
     private Scanner scanner = new Scanner(System.in);
-    private static int id = 0;
+    private static int count = 0;
 
     static {
         for (int i = 0; i < 3; i++) {
-            products[i] = new Product(++id, "Vĩnh " + id, 100000);
+            products[i] = new Product(++count, "Vĩnh " + count, 100000 * count);
         }
     }
 
@@ -32,7 +32,7 @@ public class ProductManagement {
         System.out.print("Nhập giá: ");
         double price = Double.parseDouble(scanner.nextLine());
 
-        Product product = new Product(++id, name, price);
+        Product product = new Product(++count, name, price);
 
         for (int i = 0; i < products.length; i++) {
             if (products[i] == null) {
