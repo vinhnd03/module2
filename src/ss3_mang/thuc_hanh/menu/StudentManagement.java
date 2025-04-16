@@ -1,5 +1,7 @@
 package ss3_mang.thuc_hanh.menu;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class StudentManagement {
@@ -15,9 +17,39 @@ public class StudentManagement {
     }
 
     public void display() {
+        int count = 0;
+
+
         for (int i = 0; i < students.length; i++) {
             if (students[i] != null) {
-                System.out.println(students[i]);
+                count++;
+                //System.out.println(students[i]);
+            } else {
+                break;
+            }
+        }
+
+        Student[] newList = new Student[count];
+        for (int i = 0; i < students.length; i++){
+            if(students[i] != null){
+                newList[i] = students[i];
+            }else{
+                break;
+            }
+        }
+
+//        Arrays.sort(newList, new Comparator<Student>() {
+//            @Override
+//            public int compare(Student o1, Student o2) {
+//                return o2.getId() - o1.getId();
+//            }
+//        });
+
+        Arrays.sort(newList, (s1, s2) -> s1.getName().compareTo(s2.getName()));
+
+        for (int i = 0; i < newList.length; i++) {
+            if (newList[i] != null) {
+                System.out.println(newList[i]);
             } else {
                 break;
             }

@@ -3,6 +3,7 @@ package ss7_abstract_class_va_interface.bai_tap.interface_colorable;
 import ss7_abstract_class_va_interface.bai_tap.interface_colorable.shape.Rectangle;
 import ss7_abstract_class_va_interface.bai_tap.interface_colorable.shape.Square;
 
+
 public class Main {
     public static void main(String[] args) {
         Square square = new Square(6);
@@ -21,5 +22,6 @@ public class Main {
 //        Square square1 = (Square) rectangle;
 //        System.out.println(square1.isSquare());
 //        square1.transformToCube();
+
     }
 }
