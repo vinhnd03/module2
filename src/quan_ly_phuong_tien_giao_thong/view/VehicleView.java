@@ -23,9 +23,9 @@ public class VehicleView {
         do {
             System.out.println("Bạn có muốn xóa phương tiện này không? (Y/N)");
             confirm = scanner.nextLine();
-
+            confirm = confirm.toLowerCase();
         } while (!confirm.equals("y") && !confirm.equals("n"));
-        if (confirm.equals("Y")) {
+        if (confirm.equals("y")) {
             return true;
         } else {
             return false;

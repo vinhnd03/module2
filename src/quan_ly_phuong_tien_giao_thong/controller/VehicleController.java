@@ -134,7 +134,8 @@ public class VehicleController {
 //        String id = "test";
 //        vehicle.findById(id);
         if(vehicle != null){
-            if(VehicleView.confirm()){
+            boolean permission = VehicleView.confirm();
+            if(permission){
                 vehicleService.delete(vehicle);
                 System.out.println("Xóa thành công!");
             }else{
