@@ -23,19 +23,13 @@ public class VehicleRepository implements IVehicleRepository {
     public Vehicle findByLicensePlate(String licensePlate) {
 
         ArrayList<Car> cars = carRepository.findAll();
-        for (int i = 0; i < cars.size(); i++) {
-            vehicles.add(cars.get(i));
-        }
+        vehicles.addAll(cars);
 
         ArrayList<Truck> trucks = truckRepository.findAll();
-        for (int i = 0; i < trucks.size(); i++) {
-            vehicles.add(trucks.get(i));
-        }
+        vehicles.addAll(trucks);
 
         ArrayList<Motorbike> motorbike = motorbikeRepository.findAll();
-        for (int i = 0; i < motorbike.size(); i++) {
-            vehicles.add(motorbike.get(i));
-        }
+        vehicles.addAll(motorbike);
 
         for (int i = 0; i< vehicles.size(); i++){
             if(vehicles.get(i).getLicensePlate().equals(licensePlate)){
