@@ -38,14 +38,14 @@ public class StudentManagement {
             }
         }
 
-//        Arrays.sort(newList, new Comparator<Student>() {
-//            @Override
-//            public int compare(Student o1, Student o2) {
-//                return o2.getId() - o1.getId();
-//            }
-//        });
+        Arrays.sort(newList, new Comparator<Student>() {
+            @Override
+            public int compare(Student o1, Student o2) {
+                return o2.getId() - o1.getId();
+            }
+        });
 
-        Arrays.sort(newList, (s1, s2) -> s1.getName().compareTo(s2.getName()));
+        //Arrays.sort(newList, (s1, s2) -> s1.getName().compareTo(s2.getName()));
 
         for (int i = 0; i < newList.length; i++) {
             if (newList[i] != null) {

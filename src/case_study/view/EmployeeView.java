@@ -1,39 +1,40 @@
 package case_study.view;
 
+import case_study.common.ValidateInput;
+import case_study.entity.Employee;
+
+import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeView {
     private static Scanner scanner = new Scanner(System.in);
 
-    public static void employeeMenu() {
-        boolean loop = true;
-        do {
-            System.out.println("==========[Employee]=========");
-            System.out.println("1. Display list employees");
-            System.out.println("2. Add new employee");
-            System.out.println("3. Edit employee");
-            System.out.println("4. Return main menu");
-            System.out.println("=============================");
-            System.out.print("Your choice: ");
-            int choice = Integer.parseInt(scanner.nextLine());
+    public static void dislayList(List<Employee> employees) {
+        for (int i = 0; i < employees.size(); i++) {
+            System.out.println(employees.get(i));
+        }
+    }
 
-            switch (choice) {
-                case 1:
-                    System.out.println("Display list employees");
-                    break;
-                case 2:
-                    System.out.println("2. Add new employee");
-                    break;
-                case 3:
-                    System.out.println("3. Edit employee");
-                    break;
-                case 4:
-                    loop = false;
-                    break;
-                default:
-                    System.out.println("Invalid");
-            }
+    public static Employee addNewEmployee() {
+        String id = ValidateInput.inputEmployeeId();
 
-        } while (loop);
+        String name = ValidateInput.inputName();
+
+        String birthday = ValidateInput.inputDate("ngày sinh");
+
+        System.out.println("Nhập số căn cước: ");
+        String idCard = scanner.nextLine();
+        System.out.println("Chọn giới tính (Nam: 1 || Nữ: 0): ");
+        String gender = scanner.nextLine();
+        System.out.println("Nhập số điện thoại: ");
+        String phone = scanner.nextLine();
+        System.out.println("Bằng cấp: ");
+        String qualification = scanner.nextLine();
+        System.out.println("Vị trí: ");
+        String position = scanner.nextLine();
+        System.out.println("Lương: ");
+        long salary = Long.parseLong(scanner.nextLine());
+
+        return new Employee();
     }
 }

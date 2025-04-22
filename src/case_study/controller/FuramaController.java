@@ -20,10 +20,10 @@ public class FuramaController {
             int choice = Integer.parseInt(scanner.nextLine());
             switch (choice){
                 case 1:
-                    EmployeeView.employeeMenu();
+                    EmployeeController.employeeMenu();
                     break;
                 case 2:
-                    CustomerView.customerMenu();
+                    CustomerController.customerMenu();
                     break;
                 case 3:
                     FacilityView.facilityMenu();
