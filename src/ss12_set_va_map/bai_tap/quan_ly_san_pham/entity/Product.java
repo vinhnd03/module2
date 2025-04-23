@@ -1,5 +1,11 @@
 package ss12_set_va_map.bai_tap.quan_ly_san_pham.entity;
 
+import ss12_set_va_map.bai_tap.quan_ly_san_pham.common.ReadAndWriteFile;
+import ss12_set_va_map.bai_tap.quan_ly_san_pham.common.UpdateId;
+
+import java.util.List;
+import java.util.Objects;
+
 public class Product {
     private int id;
     private String name;
@@ -11,7 +17,13 @@ public class Product {
     }
 
     public Product(String name, long price) {
-        this.id = counter++;
+        this.id = ++UpdateId.currentId;
+        this.name = name;
+        this.price = price;
+    }
+
+    public Product(int id, String name, long price) {
+        this.id = id;
         this.name = name;
         this.price = price;
     }
@@ -47,5 +59,18 @@ public class Product {
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        Product product = (Product) object;
+        return id == product.id && price == product.price && Objects.equals(name, product.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, price);
     }
 }

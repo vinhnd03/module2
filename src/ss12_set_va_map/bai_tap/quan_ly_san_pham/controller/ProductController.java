@@ -75,11 +75,11 @@ public class ProductController {
             switch (choice){
                 case 1:
                     products.sort(new AcsendingSortByPrice());
-                    display();
+                    display(products);
                     break;
                 case 2:
                     products.sort(new DescendingSortByPrice());
-                    display();
+                    display(products);
                     break;
                 case 3:
                     loop = false;
@@ -121,6 +121,15 @@ public class ProductController {
 
     private static void display(){
         List<Product> products = service.findAll();
+        if(products.size()==0){
+            System.out.println("Danh sách trống");
+        }else{
+            ProductView.displayProductList(products);
+        }
+
+    }
+
+    private static void display(List<Product> products){
         if(products.size()==0){
             System.out.println("Danh sách trống");
         }else{
