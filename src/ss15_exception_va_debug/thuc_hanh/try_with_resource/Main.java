@@ -4,7 +4,6 @@ import java.io.*;
 
 public class Main {
     private static void readFile() {
-        ;
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(new FileReader("text.txt"));
