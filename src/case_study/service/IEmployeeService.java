@@ -6,4 +6,10 @@ import java.util.List;
 
 public interface IEmployeeService {
     List<Employee> findAll();
+
+    void add(Employee employee);
+
+    Employee findById(String id);
+
+    void update(Employee editedEmployee);
 }

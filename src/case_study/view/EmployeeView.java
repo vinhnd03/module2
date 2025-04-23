@@ -22,19 +22,36 @@ public class EmployeeView {
 
         String birthday = ValidateInput.inputDate("ngày sinh");
 
-        System.out.println("Nhập số căn cước: ");
-        String idCard = scanner.nextLine();
-        System.out.println("Chọn giới tính (Nam: 1 || Nữ: 0): ");
-        String gender = scanner.nextLine();
-        System.out.println("Nhập số điện thoại: ");
-        String phone = scanner.nextLine();
-        System.out.println("Bằng cấp: ");
-        String qualification = scanner.nextLine();
-        System.out.println("Vị trí: ");
-        String position = scanner.nextLine();
-        System.out.println("Lương: ");
-        long salary = Long.parseLong(scanner.nextLine());
+        String idCard = ValidateInput.inputIdCard();
 
-        return new Employee();
+        boolean gender = ValidateInput.inputGender();
+
+        String phone = ValidateInput.inputPhone();
+
+        String email = ValidateInput.inputEmail();
+
+        System.out.print("Bằng cấp: ");
+        String qualification = scanner.nextLine();
+        System.out.print("Vị trí: ");
+        String position = scanner.nextLine();
+
+        long salary = ValidateInput.inputSalary();
+
+        return new Employee(id, name, birthday, idCard, gender,phone, email, qualification, position, salary);
+    }
+
+    public static Employee editEmployee(Employee employee) {
+        employee.setName(ValidateInput.inputName());
+        employee.setBirthday(ValidateInput.inputDate("ngày sinh"));
+        employee.setId(ValidateInput.inputIdCard());
+        employee.setGender(ValidateInput.inputGender());
+        employee.setPhone(ValidateInput.inputPhone());
+        employee.setEmail(ValidateInput.inputEmail());
+        System.out.print("Nhập bằng cấp: ");
+        employee.setQualification(scanner.nextLine());
+        System.out.print("Nhập vị ví: ");
+        employee.setPosition(scanner.nextLine());
+        employee.setSalary(ValidateInput.inputSalary());
+        return employee;
     }
 }

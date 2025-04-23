@@ -1,5 +1,6 @@
 package case_study.controller;
 
+import case_study.common.ValidateInput;
 import case_study.entity.Employee;
 import case_study.service.impl.EmployeeService;
 import case_study.view.EmployeeView;
@@ -29,10 +30,17 @@ public class EmployeeController {
                     break;
                 case 2:
                     Employee employee = EmployeeView.addNewEmployee();
-
+                    employeeService.add(employee);
                     break;
                 case 3:
-                    System.out.println("3. Edit employee");
+                    String id = ValidateInput.inputEmployeeId();
+                    Employee foundEmployee = employeeService.findById(id);
+                    if(foundEmployee== null){
+                        System.out.println("Nhân viên không tồn tại");
+                    }else{
+                        Employee editedEmployee = EmployeeView.editEmployee(foundEmployee);
+                        employeeService.update(editedEmployee);
+                    }
                     break;
                 case 4:
                     loop = false;

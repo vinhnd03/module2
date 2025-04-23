@@ -8,4 +8,10 @@ import java.util.List;
 public interface IEmployeeRepository {
 
     List<Employee> findAll();
+
+    void add(Employee employee);
+
+    Employee findById(String id);
+
+    void update(Employee employee);
 }
