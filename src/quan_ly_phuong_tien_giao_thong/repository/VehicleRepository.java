@@ -6,6 +6,7 @@ import quan_ly_phuong_tien_giao_thong.entity.Truck;
 import quan_ly_phuong_tien_giao_thong.entity.Vehicle;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class VehicleRepository implements IVehicleRepository {
 
@@ -22,13 +23,13 @@ public class VehicleRepository implements IVehicleRepository {
     @Override
     public Vehicle findByLicensePlate(String licensePlate) {
 
-        ArrayList<Car> cars = carRepository.findAll();
+        List<Car> cars = carRepository.findAll();
         vehicles.addAll(cars);
 
-        ArrayList<Truck> trucks = truckRepository.findAll();
+        List<Truck> trucks = truckRepository.findAll();
         vehicles.addAll(trucks);
 
-        ArrayList<Motorbike> motorbike = motorbikeRepository.findAll();
+        List<Motorbike> motorbike = motorbikeRepository.findAll();
         vehicles.addAll(motorbike);
 
         for (int i = 0; i< vehicles.size(); i++){

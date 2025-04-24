@@ -1,31 +1,45 @@
 package quan_ly_phuong_tien_giao_thong.repository;
 
-import quan_ly_phuong_tien_giao_thong.entity.Motorbike;
+import quan_ly_phuong_tien_giao_thong.common.ReadAndWriteFile;
 import quan_ly_phuong_tien_giao_thong.entity.Motorbike;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MotorbikeRepository implements IMotorbikeRepository{
 
-    private static ArrayList<Motorbike> motorbikes = new ArrayList<>();
+    private static final String PATH = "src/quan_ly_phuong_tien_giao_thong/data/motorbike.csv";
 
-    static {
-        motorbikes.add(new Motorbike(100, "43-K1-678.56", "Yamaha", 2019, "Nguyễn Văn A"));
-        motorbikes.add(new Motorbike(150, "43-H1-345.89", "Honda", 2018, "Nguyễn Văn B"));
-        motorbikes.add(new Motorbike(120, "43-AK-765.23", "Yamaha", 2021, "Nguyễn Văn C"));
+    public static List<String> convertToStringList(List<Motorbike> list){
+        List<String> stringList = new ArrayList<>();
+        for (Motorbike item : list){
+            stringList.add(item.infoToCSV());
+        }
+        return stringList;
     }
     @Override
-    public ArrayList<Motorbike> findAll() {
-        return motorbikes;
+    public List<Motorbike> findAll() {
+        List<Motorbike> Motorbikes = new ArrayList<>();
+        List<String> stringList = ReadAndWriteFile.readFileCSV(PATH);
+        for (String s : stringList){
+            String[] arr = s.split("\\s*,\\s*");
+            Motorbikes.add(new Motorbike(Double.parseDouble(arr[0]), arr[1], arr[2], Integer.parseInt(arr[3]), arr[4]));
+        }
+        return Motorbikes;
     }
 
     @Override
     public void add(Motorbike newMotorbike) {
-        motorbikes.add(newMotorbike);
+        List<String> stringList = new ArrayList<>();
+        stringList.add(newMotorbike.infoToCSV());
+        ReadAndWriteFile.writeFileCSV(PATH, stringList, true);
     }
 
     @Override
     public void delete(Motorbike motorbike) {
-        motorbikes.remove(motorbike);
+        List<Motorbike> motorbikeList = findAll();
+        motorbikeList.remove(motorbike);
+        List<String> stringList = convertToStringList(motorbikeList);
+        ReadAndWriteFile.writeFileCSV(PATH, stringList, false);
     }
 }

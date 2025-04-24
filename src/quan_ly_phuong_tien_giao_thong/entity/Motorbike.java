@@ -7,6 +7,12 @@ public class Motorbike extends Vehicle {
 
     }
 
+    @Override
+    public String infoToCSV() {
+        return this.capacity + "," + super.getLicensePlate() + "," + super.getBrand() + ","
+                + super.getYear() + "," + super.getOwner();
+    }
+
     public Motorbike(double capacity, String licensePlate, String brand,
                      int year, String owner) {
         super(licensePlate, brand, year, owner);

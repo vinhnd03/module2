@@ -3,11 +3,12 @@ package quan_ly_phuong_tien_giao_thong.view;
 import quan_ly_phuong_tien_giao_thong.entity.Truck;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class TruckView {
 
-    public static void displayTruck(ArrayList<Truck> trucks ){
+    public static void displayTruck(List<Truck> trucks ){
 
         System.out.println("Danh sách xe tải");
         System.out.printf("%-15s| %-15s| %-10s| %-20s| %-10s\n", "Biển số", "Hãng", "Năm sx", "Chủ sở hữu", "Tải trọng");

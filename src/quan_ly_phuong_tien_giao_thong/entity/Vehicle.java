@@ -1,6 +1,8 @@
 package quan_ly_phuong_tien_giao_thong.entity;
 
 
+import java.util.Objects;
+
 public abstract class Vehicle {
     private String licensePlate;
     private String brand;
@@ -16,6 +18,8 @@ public abstract class Vehicle {
         this.year = year;
         this.owner = owner;
     }
+
+    public abstract String infoToCSV();
 
     public String getLicensePlate() {
         return licensePlate;
@@ -47,6 +51,19 @@ public abstract class Vehicle {
 
     public void setOwner(String owner) {
         this.owner = owner;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        Vehicle vehicle = (Vehicle) object;
+        return year == vehicle.year && Objects.equals(licensePlate, vehicle.licensePlate) && Objects.equals(brand, vehicle.brand) && Objects.equals(owner, vehicle.owner);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(licensePlate, brand, year, owner);
     }
 
     @Override

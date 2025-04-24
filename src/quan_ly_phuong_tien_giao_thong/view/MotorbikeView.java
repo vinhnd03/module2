@@ -4,12 +4,13 @@ import quan_ly_phuong_tien_giao_thong.entity.Motorbike;
 import quan_ly_phuong_tien_giao_thong.service.MotorbikeService;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class MotorbikeView {
     private static MotorbikeService motorbikeService = new MotorbikeService();
 
-    public static void displayMotorbike(ArrayList<Motorbike> motorbikes){
+    public static void displayMotorbike(List<Motorbike> motorbikes){
         System.out.println("Danh sách xe máy");
         System.out.printf("%-15s| %-15s| %-10s| %-20s| %-10s\n", "Biển số", "Hãng", "Năm sx", "Chủ sở hữu", "Công suất");
         for (int i = 0; i < motorbikes.size(); i++){

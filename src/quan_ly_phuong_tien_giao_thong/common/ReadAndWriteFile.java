@@ -1,6 +1,6 @@
-package ss12_set_va_map.bai_tap.quan_ly_san_pham.common;
+package quan_ly_phuong_tien_giao_thong.common;
 
-import ss12_set_va_map.bai_tap.quan_ly_san_pham.entity.Product;
+import quan_ly_phuong_tien_giao_thong.entity.Vehicle;
 
 import java.io.*;
 import java.util.ArrayList;

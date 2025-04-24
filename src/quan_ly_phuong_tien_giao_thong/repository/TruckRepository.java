@@ -1,31 +1,47 @@
 package quan_ly_phuong_tien_giao_thong.repository;
 
+import quan_ly_phuong_tien_giao_thong.common.ReadAndWriteFile;
 import quan_ly_phuong_tien_giao_thong.entity.Car;
 import quan_ly_phuong_tien_giao_thong.entity.Motorbike;
 import quan_ly_phuong_tien_giao_thong.entity.Truck;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class TruckRepository implements ITruckRepository{
-    private static ArrayList<Truck> trucks = new ArrayList<>();
+public class TruckRepository implements ITruckRepository {
+    private static final String PATH = "src/quan_ly_phuong_tien_giao_thong/data/truck.csv";
 
-    static {
-        trucks.add(new Truck(3, "43A-012.34", "Huyndai", 2019, "Nguyễn Văn A"));
-        trucks.add(new Truck(9, "43C-47.678", "Dongfeng", 2020, "Nguyễn Văn B"));
-        trucks.add(new Truck(12, "43C-45.235", "Hino", 2021, "Nguyễn Văn C"));
+    public static List<String> convertToStringList(List<Truck> list) {
+        List<String> stringList = new ArrayList<>();
+        for (Truck item : list) {
+            stringList.add(item.infoToCSV());
+        }
+        return stringList;
     }
+
     @Override
-    public ArrayList<Truck> findAll() {
+    public List<Truck> findAll() {
+        List<Truck> trucks = new ArrayList<>();
+        List<String> stringList = ReadAndWriteFile.readFileCSV(PATH);
+        for (String s : stringList) {
+            String[] arr = s.split("\\s*,\\s*");
+            trucks.add(new Truck(Double.parseDouble(arr[0]), arr[1], arr[2], Integer.parseInt(arr[3]), arr[4]));
+        }
         return trucks;
     }
 
     @Override
     public void add(Truck newTruck) {
-        trucks.add(newTruck);
+        List<String> stringList = new ArrayList<>();
+        stringList.add(newTruck.infoToCSV());
+        ReadAndWriteFile.writeFileCSV(PATH, stringList, true);
     }
 
     @Override
     public void delete(Truck truck) {
-        trucks.remove(truck);
+        List<Truck> truckList = findAll();
+        truckList.remove(truck);
+        List<String> stringList = convertToStringList(truckList);
+        ReadAndWriteFile.writeFileCSV(PATH, stringList, false);
     }
 }

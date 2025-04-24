@@ -1,10 +1,18 @@
 package quan_ly_phuong_tien_giao_thong.entity;
 
+import java.util.Objects;
+
 public class Car extends Vehicle{
     private int numberOfSeats;
     private String type;
 
     public Car() {
+    }
+
+    @Override
+    public String infoToCSV() {
+        return this.numberOfSeats + "," + this.type + "," + super.getLicensePlate() + "," + super.getBrand() + ","
+                + super.getYear() + "," + super.getOwner();
     }
 
     public Car(int numberOfSeats, String type, String licensePlate, String brand, int year,
@@ -31,7 +39,19 @@ public class Car extends Vehicle{
     }
 
 
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        Car car = (Car) object;
+        return numberOfSeats == car.numberOfSeats && Objects.equals(type, car.type);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), numberOfSeats, type);
+    }
 
     @Override
     public String toString() {

@@ -7,6 +7,12 @@ public class Truck extends Vehicle{
 
     }
 
+    @Override
+    public String infoToCSV() {
+        return this.getPayload() + "," + super.getLicensePlate() + "," + super.getBrand() + ","
+                + super.getYear() + "," + super.getOwner();
+    }
+
     public Truck(double payload, String licensePlate, String brand,
                  int year, String owner) {
         super(licensePlate, brand, year, owner);

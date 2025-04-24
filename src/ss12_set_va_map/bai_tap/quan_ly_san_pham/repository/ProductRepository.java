@@ -7,20 +7,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductRepository implements IProductRepository {
-    //private static List<Product> productList = new ArrayList<>();
-    private ReadAndWriteFile readAndWriteFile = new ReadAndWriteFile();
-    private String path = "src/ss12_set_va_map/bai_tap/quan_ly_san_pham/data/product.csv";
+    private static final String PATH = "src/ss12_set_va_map/bai_tap/quan_ly_san_pham/data/product.csv";
 
+    private List<String> convertToStringArray(List<Product> products){
+        List<String> stringList = new ArrayList<>();
+        for (Product p: products){
+            stringList.add(p.convertToString());
+        }
+        return stringList;
+    }
     @Override
     public void add(Product product) {
-        readAndWriteFile.writeFile(path, product);
+        List<String> stringList = new ArrayList<>();
+        stringList.add(product.convertToString());
+        ReadAndWriteFile.writeFileCSV(PATH, stringList, true);
     }
 
     @Override
     public List<Product> findAll() {
-        List<Product> productList = readAndWriteFile.readFile(path);
+        List<Product> productList = new ArrayList<>();
+        List<String> list = ReadAndWriteFile.readFileCSV(PATH);
+        for (String s : list){
+            String[] array = s.split(",");
+            productList.add(new Product(Integer.parseInt(array[0]), array[1], Long.parseLong(array[2])));
+        }
         return productList;
-
     }
 
     @Override
@@ -36,30 +47,34 @@ public class ProductRepository implements IProductRepository {
 
     @Override
     public void update(Product product) {
-        List<Product> productList = readAndWriteFile.readFile(path);
+        List<Product> productList = findAll();
         for (int i = 0; i < productList.size(); i++) {
-            if (productList.get(i).getId() == product.getId()) {
+            if(productList.get(i).getId() == product.getId()){
                 productList.set(i, product);
-                readAndWriteFile.writeFile(path, productList);
                 break;
             }
         }
+        List<String> stringList = convertToStringArray(productList);
+        ReadAndWriteFile.writeFileCSV(PATH, stringList, false);
+
     }
 
     @Override
     public void delete(Product product) {
-        List<Product> productList = readAndWriteFile.readFile(path);
+        List<Product> productList = findAll();
         productList.remove(product);
-        readAndWriteFile.writeFile(path, productList);
+        List<String> stringList = convertToStringArray(productList);
+        ReadAndWriteFile.writeFileCSV(PATH, stringList, false);
+
     }
 
     @Override
     public List<Product> findByName(String name) {
-        List<Product> productList = readAndWriteFile.readFile(path);
+        List<Product> productList = findAll();
         List<Product> foundProducts = new ArrayList<>();
-        for (int i = 0; i < productList.size(); i++) {
-            if (productList.get(i).getName().toLowerCase().contains(name.toLowerCase())) {
-                foundProducts.add(productList.get(i));
+        for (Product p : productList){
+            if(p.getName().toLowerCase().contains(name.toLowerCase())){
+                foundProducts.add(p);
             }
         }
         return foundProducts;

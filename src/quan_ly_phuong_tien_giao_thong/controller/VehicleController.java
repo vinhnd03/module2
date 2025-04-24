@@ -14,6 +14,7 @@ import quan_ly_phuong_tien_giao_thong.view.TruckView;
 import quan_ly_phuong_tien_giao_thong.view.VehicleView;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class VehicleController {
@@ -69,15 +70,15 @@ public class VehicleController {
             int choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
                 case 1:
-                    ArrayList<Car> cars = carService.findAll();
+                    List<Car> cars = carService.findAll();
                     CarView.displayCar(cars);
                     break;
                 case 2:
-                    ArrayList<Truck> trucks = truckService.findAll();
+                    List<Truck> trucks = truckService.findAll();
                     TruckView.displayTruck(trucks);
                     break;
                 case 3:
-                    ArrayList<Motorbike> motorbikes = motorbikeService.findAll();
+                    List<Motorbike> motorbikes = motorbikeService.findAll();
                     MotorbikeView.displayMotorbike(motorbikes);
                     break;
                 case 4:

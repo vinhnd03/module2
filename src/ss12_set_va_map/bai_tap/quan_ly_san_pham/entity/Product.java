@@ -52,6 +52,10 @@ public class Product {
         this.price = price;
     }
 
+    public String convertToString(){
+        return this.getId() + "," + this.getName() + "," + this.getPrice();
+    }
+
     @Override
     public String toString() {
         return "Product{" +

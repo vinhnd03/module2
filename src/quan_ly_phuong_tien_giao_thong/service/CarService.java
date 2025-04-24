@@ -5,12 +5,13 @@ import quan_ly_phuong_tien_giao_thong.repository.CarRepository;
 import quan_ly_phuong_tien_giao_thong.repository.ICarRepository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CarService implements ICarService{
     private ICarRepository carRepository = new CarRepository();
 
     @Override
-    public ArrayList<Car> findAll() {
+    public List<Car> findAll() {
         return carRepository.findAll();
     }
 

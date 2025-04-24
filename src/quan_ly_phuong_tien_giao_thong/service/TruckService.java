@@ -6,12 +6,13 @@ import quan_ly_phuong_tien_giao_thong.repository.ITruckRepository;
 import quan_ly_phuong_tien_giao_thong.repository.TruckRepository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TruckService implements ITruckService{
     private ITruckRepository truckRepository = new TruckRepository();
 
     @Override
-    public ArrayList<Truck> findAll() {
+    public List<Truck> findAll() {
         return truckRepository.findAll();
     }
 
