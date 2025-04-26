@@ -48,4 +48,11 @@ public class Employee extends Person{
                 ", salary=" + salary +
                 '}' + super.toString();
     }
+
+    @Override
+    public String infoToCSVFile() {
+        return super.getId() + "," + super.getName() + "," + super.getBirthday() + "," + super.getIdCard() + "," +
+                super.isGender() + "," + super.getPhone() + "," + super.getEmail() + "," + this.qualification + "," + this.position
+                + "," + this.salary;
+    }
 }

@@ -1,5 +1,7 @@
 package case_study.entity;
 
+import java.util.Objects;
+
 public abstract class Person {
     private String id;
     private String name;
@@ -88,5 +90,22 @@ public abstract class Person {
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    public abstract String infoToCSVFile();
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        Person person = (Person) object;
+        return gender == person.gender && Objects.equals(id, person.id) && Objects.equals(name, person.name) &&
+                Objects.equals(birthday, person.birthday) && Objects.equals(idCard, person.idCard) &&
+                Objects.equals(phone, person.phone) && Objects.equals(email, person.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, birthday, idCard, gender, phone, email);
     }
 }

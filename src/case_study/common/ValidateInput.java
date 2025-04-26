@@ -15,7 +15,7 @@ public class ValidateInput {
         Pattern pattern = Pattern.compile(regex);
         String name;
         do {
-            System.out.print("Nhập tên nhân viên: ");
+            System.out.print("Nhập tên: ");
             name = scanner.nextLine().trim();
             Matcher matcher = pattern.matcher(name);
 
@@ -149,4 +149,20 @@ public class ValidateInput {
     }
 
 
+    public static String inputCustomerId() {
+        String id;
+        String regex = "KH-[0-9]{4}$";
+        Pattern pattern = Pattern.compile(regex);
+        do {
+            System.out.print("Nhập id khách hàng: ");
+            id = scanner.nextLine().trim();
+            Matcher matcher = pattern.matcher(id);
+
+            if (matcher.matches()) {
+                return id;
+            } else {
+                System.out.println("Không hợp lệ.");
+            }
+        } while (true);
+    }
 }

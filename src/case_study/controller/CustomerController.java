@@ -30,7 +30,8 @@ public class CustomerController {
                     CustomerView.displayList(customers);
                     break;
                 case 2:
-                    System.out.println("2. Add new customer");
+                    Customer customer = CustomerView.inputNewCustomer();
+                    customerService.add(customer);
                     break;
                 case 3:
                     System.out.println("3. Edit customer");

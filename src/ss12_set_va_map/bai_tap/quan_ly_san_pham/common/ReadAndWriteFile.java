@@ -37,7 +37,33 @@ public class ReadAndWriteFile {
         return stringList;
     }
 
+    public static <T> void writeListObjectToBinaryFile(String path, List<T> objectList){
+        File file = new File(path);
+        try(ObjectOutputStream objectOutputStream = new ObjectOutputStream
+                (new FileOutputStream(file))) {
+            objectOutputStream.writeObject(objectList);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+    public static <T> List<T> readBinaryFileToListObject(String path){
+        List<T> objectList = new ArrayList<>();
+        File file = new File(path);
+        try(ObjectInputStream objectInputStream = new ObjectInputStream
+                (new FileInputStream(file))){
+            if(file.length() > 0) {
+                objectList = (List<T>) objectInputStream.readObject();
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return objectList;
+    }
 }
 
 

@@ -1,23 +1,24 @@
 package case_study.entity;
 
 public class Customer extends Person{
-    private String type;
+    private String rank;
     private String address;
 
     public Customer(){};
 
-    public Customer(String id, String name, String birthday, String idCard, boolean gender, String phone, String email, String type, String address) {
+    public Customer(String id, String name, String birthday, String idCard, boolean gender
+            , String phone, String email, String rank, String address) {
         super(id, name, birthday, idCard, gender, phone, email);
-        this.type = type;
+        this.rank = rank;
         this.address = address;
     }
 
-    public String getType() {
-        return type;
+    public String getRank() {
+        return rank;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setRank(String rank) {
+        this.rank = rank;
     }
 
     public String getAddress() {
@@ -31,8 +32,14 @@ public class Customer extends Person{
     @Override
     public String toString() {
         return "Customer{" +
-                "type='" + type + '\'' +
+                "type='" + rank + '\'' +
                 ", address='" + address + '\'' +
                 '}' + super.toString();
+    }
+
+    @Override
+    public String infoToCSVFile() {
+        return super.getId() + "," + super.getName() + "," + super.getBirthday() + "," + super.getIdCard() + "," +
+                super.isGender() + "," + super.getPhone() + "," + super.getEmail() + "," + this.rank + "," + this.address;
     }
 }

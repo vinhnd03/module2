@@ -29,7 +29,7 @@ public class EmployeeController {
                     EmployeeView.dislayList(employees);
                     break;
                 case 2:
-                    Employee employee = EmployeeView.addNewEmployee();
+                    Employee employee = EmployeeView.inputNewEmployee();
                     employeeService.add(employee);
                     break;
                 case 3:

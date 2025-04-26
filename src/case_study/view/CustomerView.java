@@ -1,5 +1,6 @@
 package case_study.view;
 
+import case_study.common.ValidateInput;
 import case_study.entity.Customer;
 
 import java.util.List;
@@ -13,5 +14,21 @@ public class CustomerView {
         for (int i = 0; i < customers.size(); i++) {
             System.out.println(customers.get(i));
         }
+    }
+
+    public static Customer inputNewCustomer() {
+        String id = ValidateInput.inputCustomerId();
+        String name = ValidateInput.inputName();
+        String birthday = ValidateInput.inputDate("Ngày sinh");
+        String idCard = ValidateInput.inputIdCard();
+        boolean gender = ValidateInput.inputGender();
+        String phone = ValidateInput.inputPhone();
+        String email = ValidateInput.inputEmail();
+        System.out.print("Nhập hạng: ");
+        String type = scanner.nextLine();
+        System.out.print("Nhập địa chỉ: ");
+        String address = scanner.nextLine();
+
+        return new Customer(id, name, birthday, idCard, gender, phone, email, type, address);
     }
 }

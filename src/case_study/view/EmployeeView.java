@@ -15,7 +15,7 @@ public class EmployeeView {
         }
     }
 
-    public static Employee addNewEmployee() {
+    public static Employee inputNewEmployee() {
         String id = ValidateInput.inputEmployeeId();
 
         String name = ValidateInput.inputName();
@@ -43,7 +43,7 @@ public class EmployeeView {
     public static Employee editEmployee(Employee employee) {
         employee.setName(ValidateInput.inputName());
         employee.setBirthday(ValidateInput.inputDate("ngày sinh"));
-        employee.setId(ValidateInput.inputIdCard());
+        employee.setIdCard(ValidateInput.inputIdCard());
         employee.setGender(ValidateInput.inputGender());
         employee.setPhone(ValidateInput.inputPhone());
         employee.setEmail(ValidateInput.inputEmail());

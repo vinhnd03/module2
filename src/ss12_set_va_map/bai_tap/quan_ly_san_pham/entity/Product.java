@@ -3,10 +3,11 @@ package ss12_set_va_map.bai_tap.quan_ly_san_pham.entity;
 import ss12_set_va_map.bai_tap.quan_ly_san_pham.common.ReadAndWriteFile;
 import ss12_set_va_map.bai_tap.quan_ly_san_pham.common.UpdateId;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
-public class Product {
+public class Product implements Serializable {
     private int id;
     private String name;
     private long price;

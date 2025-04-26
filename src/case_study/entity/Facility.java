@@ -1,5 +1,7 @@
 package case_study.entity;
 
+import java.util.Objects;
+
 public abstract class Facility {
     private String id;
     private String name;
@@ -78,5 +80,18 @@ public abstract class Facility {
                 ", max=" + max +
                 ", type='" + type + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        Facility facility = (Facility) object;
+        return Double.compare(area, facility.area) == 0 && price == facility.price && max == facility.max && Objects.equals(id, facility.id) && Objects.equals(name, facility.name) && Objects.equals(type, facility.type);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, area, price, max, type);
     }
 }

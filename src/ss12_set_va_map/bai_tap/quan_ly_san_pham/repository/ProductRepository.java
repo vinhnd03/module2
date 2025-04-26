@@ -8,6 +8,8 @@ import java.util.List;
 
 public class ProductRepository implements IProductRepository {
     private static final String PATH = "src/ss12_set_va_map/bai_tap/quan_ly_san_pham/data/product.csv";
+    private static final String DAT_PATH = "src/ss12_set_va_map/bai_tap/quan_ly_san_pham/data/product.dat";
+
 
     private List<String> convertToStringArray(List<Product> products){
         List<String> stringList = new ArrayList<>();
@@ -16,23 +18,37 @@ public class ProductRepository implements IProductRepository {
         }
         return stringList;
     }
+//    @Override
+//    public void add(Product product) {
+//        List<String> stringList = new ArrayList<>();
+//        stringList.add(product.convertToString());
+//        ReadAndWriteFile.writeFileCSV(PATH, stringList, true);
+//    }
+
     @Override
     public void add(Product product) {
-        List<String> stringList = new ArrayList<>();
-        stringList.add(product.convertToString());
-        ReadAndWriteFile.writeFileCSV(PATH, stringList, true);
+        List<Product> products = ReadAndWriteFile.readBinaryFileToListObject(DAT_PATH);
+        products.add(product);
+        ReadAndWriteFile.writeListObjectToBinaryFile(DAT_PATH, products);
     }
 
     @Override
     public List<Product> findAll() {
         List<Product> productList = new ArrayList<>();
-        List<String> list = ReadAndWriteFile.readFileCSV(PATH);
-        for (String s : list){
-            String[] array = s.split(",");
-            productList.add(new Product(Integer.parseInt(array[0]), array[1], Long.parseLong(array[2])));
-        }
+        productList = ReadAndWriteFile.readBinaryFileToListObject(DAT_PATH);
         return productList;
     }
+
+//    @Override
+//    public List<Product> findAll() {
+//        List<Product> productList = new ArrayList<>();
+//        List<String> list = ReadAndWriteFile.readFileCSV(PATH);
+//        for (String s : list){
+//            String[] array = s.split(",");
+//            productList.add(new Product(Integer.parseInt(array[0]), array[1], Long.parseLong(array[2])));
+//        }
+//        return productList;
+//    }
 
     @Override
     public Product findById(int id) {
@@ -63,10 +79,18 @@ public class ProductRepository implements IProductRepository {
     public void delete(Product product) {
         List<Product> productList = findAll();
         productList.remove(product);
-        List<String> stringList = convertToStringArray(productList);
-        ReadAndWriteFile.writeFileCSV(PATH, stringList, false);
+        ReadAndWriteFile.writeListObjectToBinaryFile(DAT_PATH, productList);
 
     }
+
+//    @Override
+//    public void delete(Product product) {
+//        List<Product> productList = findAll();
+//        productList.remove(product);
+//        List<String> stringList = convertToStringArray(productList);
+//        ReadAndWriteFile.writeFileCSV(PATH, stringList, false);
+//
+//    }
 
     @Override
     public List<Product> findByName(String name) {
