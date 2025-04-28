@@ -8,4 +8,8 @@ public interface ICustomerRepository {
     List<Customer> findAll();
 
     void add(Customer customer);
+
+    Customer findById(String customerId);
+
+    void update(Customer editedCustomer);
 }

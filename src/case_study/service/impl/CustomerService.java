@@ -19,4 +19,14 @@ public class CustomerService implements ICustomerService {
     public void add(Customer customer) {
         repository.add(customer);
     }
+
+    @Override
+    public Customer findById(String customerId) {
+        return repository.findById(customerId);
+    }
+
+    @Override
+    public void update(Customer editedCustomer) {
+        repository.update(editedCustomer);
+    }
 }

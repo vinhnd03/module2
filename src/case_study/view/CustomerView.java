@@ -31,4 +31,23 @@ public class CustomerView {
 
         return new Customer(id, name, birthday, idCard, gender, phone, email, type, address);
     }
+
+    public static String inputCustomerId() {
+        System.out.println("Nhập id khách hàng cần sửa: ");
+        return scanner.nextLine();
+    }
+
+    public static Customer editCustomer(Customer foundCustomer) {
+        foundCustomer.setName(ValidateInput.inputName());
+        foundCustomer.setBirthday(ValidateInput.inputDate("Ngày sinh"));
+        foundCustomer.setIdCard(ValidateInput.inputIdCard());
+        foundCustomer.setGender(ValidateInput.inputGender());
+        foundCustomer.setPhone(ValidateInput.inputPhone());
+        foundCustomer.setEmail(ValidateInput.inputEmail());;
+        System.out.print("Nhập hạng: ");
+        foundCustomer.setRank(scanner.nextLine());
+        System.out.print("Nhập địa chỉ: ");
+        foundCustomer.setAddress(scanner.nextLine());
+        return foundCustomer;
+    }
 }

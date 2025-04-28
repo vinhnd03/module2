@@ -22,27 +22,36 @@ public class CustomerController {
             System.out.println("4. Return main menu");
             System.out.println("=============================");
             System.out.print("Your choice: ");
-            int choice = Integer.parseInt(scanner.nextLine());
-
-            switch (choice) {
-                case 1:
-                    List<Customer> customers = customerService.findAll();
-                    CustomerView.displayList(customers);
-                    break;
-                case 2:
-                    Customer customer = CustomerView.inputNewCustomer();
-                    customerService.add(customer);
-                    break;
-                case 3:
-                    System.out.println("3. Edit customer");
-                    break;
-                case 4:
-                    loop = false;
-                    break;
-                default:
-                    System.out.println("Invalid");
+            try {
+                int choice = Integer.parseInt(scanner.nextLine());
+                switch (choice) {
+                    case 1:
+                        List<Customer> customers = customerService.findAll();
+                        CustomerView.displayList(customers);
+                        break;
+                    case 2:
+                        Customer customer = CustomerView.inputNewCustomer();
+                        customerService.add(customer);
+                        break;
+                    case 3:
+                        String customerId = CustomerView.inputCustomerId();
+                        Customer foundCustomer = customerService.findById(customerId);
+                        if(foundCustomer != null){
+                            Customer editedCustomer = CustomerView.editCustomer(foundCustomer);
+                            customerService.update(editedCustomer);
+                        }else{
+                            System.out.println("Không tìm thấy khách hàng có id là: " + customerId);
+                        }
+                        break;
+                    case 4:
+                        loop = false;
+                        break;
+                    default:
+                        System.out.println("Invalid");
+                }
+            }catch (NumberFormatException e){
+                System.out.println("Invalid number format");
             }
-
         } while (loop);
     }
 }

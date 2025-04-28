@@ -54,4 +54,9 @@ public class EmployeeView {
         employee.setSalary(ValidateInput.inputSalary());
         return employee;
     }
+
+    public static String inputEmployeeId() {
+        System.out.println("Nhập id nhân viên cần sửa: ");
+        return scanner.nextLine();
+    }
 }

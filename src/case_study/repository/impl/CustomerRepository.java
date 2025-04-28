@@ -28,4 +28,28 @@ public class CustomerRepository implements ICustomerRepository {
         stringList.add(customer.infoToCSVFile());
         ReadAndWriteFile.writeFileCSV(PATH, stringList, true);
     }
+
+    @Override
+    public Customer findById(String customerId) {
+        List<Customer> customerList = findAll();
+        for (Customer customer: customerList){
+            if(customer.getId().equals(customerId)){
+                return customer;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public void update(Customer editedCustomer) {
+        List<Customer> customerList = findAll();
+        List<String> stringList = new ArrayList<>();
+        for(int i = 0; i < customerList.size(); i++){
+            if(customerList.get(i).getId().equals(editedCustomer.getId())){
+                customerList.set(i, editedCustomer);
+            }
+            stringList.add(customerList.get(i).infoToCSVFile());
+        }
+        ReadAndWriteFile.writeFileCSV(PATH, stringList, false);
+    }
 }

@@ -50,13 +50,9 @@ public class EmployeeRepository implements IEmployeeRepository {
     @Override
     public void update(Employee employee) {
         List<Employee> employees = findAll();
-        System.out.println(employee.getId());
         for (int i = 0; i < employees.size(); i++) {
-            System.out.println(employees.get(i).getId());
             if(employees.get(i).getId().equals(employee.getId())){
-
                 employees.set(i, employee);
-                System.out.println("test");
                 break;
             }
         }

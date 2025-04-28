@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class FuramaController {
     private static Scanner scanner = new Scanner(System.in);
+
     public static int displayMainMenu() {
         do {
             System.out.println("================== [ FURAMA ] ==================");
@@ -17,30 +18,37 @@ public class FuramaController {
             System.out.println("6.  Exit");
             System.out.println("================================================");
             System.out.print("Your choice: ");
-            int choice = Integer.parseInt(scanner.nextLine());
-            switch (choice){
-                case 1:
-                    EmployeeController.employeeMenu();
-                    break;
-                case 2:
-                    CustomerController.customerMenu();
-                    break;
-                case 3:
-                    FacilityView.facilityMenu();
-                    break;
-                case 4:
-                    BookingView.bookingMenu();
-                    break;
-                case 5:
-                    View.promotionMenu();
-                    break;
-                case 6:
-                    System.out.println("Goodbye");
-                    System.exit(0);
-                default:
-                    System.out.println("Invalid");
-                    break;
+
+            try {
+                int choice = Integer.parseInt(scanner.nextLine());
+                switch (choice) {
+                    case 1:
+                        EmployeeController.employeeMenu();
+                        break;
+                    case 2:
+                        CustomerController.customerMenu();
+                        break;
+                    case 3:
+                        FacilityController.facilityMenu();
+                        break;
+                    case 4:
+                        BookingView.bookingMenu();
+                        break;
+                    case 5:
+                        View.promotionMenu();
+                        break;
+                    case 6:
+                        System.out.println("Goodbye");
+                        System.exit(0);
+                    default:
+                        System.out.println("Invalid");
+                        break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid number format");
             }
+
+
         } while (true);
     }
 }
