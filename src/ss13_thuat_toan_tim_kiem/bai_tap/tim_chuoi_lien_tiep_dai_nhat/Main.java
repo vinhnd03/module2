@@ -8,7 +8,7 @@ public class Main {
             int j = i;
             while (j + 1 <= str.length() - 1) {
                 if (str.charAt(j) <= str.charAt(j + 1)) {
-                    if (temp.length() == 0) {
+                    if (temp.isEmpty()) {
                         temp.append(str.charAt(j));
                     }
                     temp.append(str.charAt(j + 1));

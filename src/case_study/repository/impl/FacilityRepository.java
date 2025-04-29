@@ -24,6 +24,15 @@ public class FacilityRepository implements IFacilityRepository {
         List<House> houseList = houseRepository.findAll();
         List<Room> roomList = roomRepository.findAll();
         List<Villa> villaList = villaRepository.findAll();
+        for(House house : houseList){
+            facilityMap.put(house, 0);
+        }
+        for(Room room: roomList){
+            facilityMap.put(room, 0);
+        }
+        for(Villa villa: villaList){
+            facilityMap.put(villa, 0);
+        }
         return facilityMap;
     }
 

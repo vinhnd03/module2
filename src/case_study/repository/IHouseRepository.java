@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface IHouseRepository {
     List<House> findAll();
+    void add(House house);
 }

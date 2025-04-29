@@ -72,12 +72,11 @@ public class ValidateInput {
             Matcher matcher = pattern.matcher(idCard);
             if (matcher.matches()) {
                 return idCard;
-            }else{
+            } else {
                 System.out.println("Không hợp lệ");
             }
         } while (true);
     }
-
 
 
     public static long inputSalary() {
@@ -87,7 +86,7 @@ public class ValidateInput {
             salary = Long.parseLong(scanner.nextLine());
             if (salary <= 0) {
                 System.out.println("Lương phải lớn hơn 0");
-            }else{
+            } else {
                 return salary;
             }
         } while (true);
@@ -100,7 +99,7 @@ public class ValidateInput {
             gender = Integer.parseInt(scanner.nextLine());
             if (gender != 0 && gender != 1) {
                 System.out.println("Vui lòng nhập theo yêu cầu");
-            }else{
+            } else {
                 return (gender == 1) ? true : false;
             }
         } while (true);
@@ -116,7 +115,7 @@ public class ValidateInput {
             Matcher matcher = pattern.matcher(phone);
             if (matcher.matches()) {
                 return phone;
-            }else{
+            } else {
                 System.out.println("Yêu cần nhập đúng định dạng số điện thoại");
             }
         } while (true);
@@ -130,12 +129,12 @@ public class ValidateInput {
             System.out.print("Nhập email: ");
             email = scanner.nextLine();
             Matcher matcher = pattern.matcher(email);
-            if(matcher.matches()){
+            if (matcher.matches()) {
                 return email;
-            }else{
+            } else {
                 System.out.println("Sai định dạng");
             }
-        }while (true);
+        } while (true);
     }
 
     private static boolean isValidDate(String dateStr) {
@@ -164,5 +163,102 @@ public class ValidateInput {
                 System.out.println("Không hợp lệ.");
             }
         } while (true);
+    }
+
+    public static String inputHouseId() {
+        String id;
+        String regex = "^SVHO-[0-9]{4}$";
+        Pattern pattern = Pattern.compile(regex);
+        do {
+            System.out.print("Nhập mã House(SVHO-XXXX): ");
+            id = scanner.nextLine();
+            Matcher matcher = pattern.matcher(id);
+            if (matcher.matches()) {
+                return id;
+            } else {
+                System.out.println("Không hợp lệ");
+            }
+        } while (true);
+    }
+
+    public static String inputServiceName() {
+        String name;
+        String regex = "^([A-Z][a-z]*)+(\\s[A-Za-z]+)*$";
+        Pattern pattern = Pattern.compile(regex);
+        do {
+            System.out.print("Nhập tên dịch vụ: ");
+            name = scanner.nextLine();
+            Matcher matcher = pattern.matcher(name);
+            if (matcher.matches()) {
+                return name;
+            } else {
+                System.out.println("Không hợp lệ");
+            }
+        } while (true);
+    }
+
+    public static Double inputArea() {
+        double area = 0;
+        while (area < 30) {
+            try {
+                System.out.print("Nhập diện tích: ");
+                area = Double.parseDouble(scanner.nextLine());
+                if(area < 30){
+                    System.out.println("Diện tích phải lớn hơn 30");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Nhập sai định dạng số");
+            }
+        }
+        return area;
+
+    }
+
+    public static long inputPrice() {
+        long price = 0;
+        while (price < 1){
+            try{
+                System.out.print("Nhập giá thuê: ");
+                price = Long.parseLong(scanner.nextLine());
+                if(price < 1){
+                    System.out.println("Giá thuê phải lớn hơn 0");
+                }
+            }catch (NumberFormatException e){
+                System.out.println("Nhập sai định dạng số.");
+            }
+        }
+        return price;
+    }
+
+    public static int inputMaxPeople() {
+        int max = 0;
+        while (max < 1 || max > 20){
+            try {
+                System.out.print("Nhập số người tối đa: ");
+                max = Integer.parseInt(scanner.nextLine());
+                if(max < 1 || max > 20){
+                    System.out.println("Số người tối thiểu là 1 và tối đa là 0");
+                }
+            }catch (NumberFormatException e){
+                System.out.println("Nhập sai định dạng số");
+            }
+        }
+        return max;
+    }
+
+    public static int inputNumberOfFloors() {
+        int numberOfFloors = 0;
+        while (numberOfFloors < 1){
+            try {
+                System.out.print("Nhập số tầng: ");
+                numberOfFloors = Integer.parseInt(scanner.nextLine());
+                if(numberOfFloors < 1){
+                    System.out.println("Số tầng phải là số dương");
+                }
+            }catch (NumberFormatException e){
+                System.out.println("Nhập sai định dạng");
+            }
+        }
+        return numberOfFloors;
     }
 }
