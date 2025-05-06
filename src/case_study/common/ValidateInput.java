@@ -181,6 +181,22 @@ public class ValidateInput {
         } while (true);
     }
 
+    public static String inputRoomId() {
+        String id;
+        String regex = "^SVRO-[0-9]{4}$";
+        Pattern pattern = Pattern.compile(regex);
+        do {
+            System.out.print("Nhập mã Room(SVRO-XXXX): ");
+            id = scanner.nextLine();
+            Matcher matcher = pattern.matcher(id);
+            if (matcher.matches()) {
+                return id;
+            } else {
+                System.out.println("Không hợp lệ");
+            }
+        } while (true);
+    }
+
     public static String inputServiceName() {
         String name;
         String regex = "^([A-Z][a-z]*)+(\\s[A-Za-z]+)*$";
@@ -260,5 +276,53 @@ public class ValidateInput {
             }
         }
         return numberOfFloors;
+    }
+
+    public static String inputVillaId() {
+        String id;
+        String regex = "^SVVL-[0-9]{4}$";
+        Pattern pattern = Pattern.compile(regex);
+        do {
+            System.out.print("Nhập mã Villa(SVVL-XXXX): ");
+            id = scanner.nextLine();
+            Matcher matcher = pattern.matcher(id);
+            if (matcher.matches()) {
+                return id;
+            } else {
+                System.out.println("Không hợp lệ");
+            }
+        } while (true);
+    }
+
+    public static double inputPoolArea() {
+        double area = 0;
+        while (area < 30) {
+            try {
+                System.out.print("Nhập diện tích hồ bơi: ");
+                area = Double.parseDouble(scanner.nextLine());
+                if(area < 30){
+                    System.out.println("Diện tích phải lớn hơn 30");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Nhập sai định dạng số");
+            }
+        }
+        return area;
+    }
+
+    public static String inputBookingId() {
+        String id;
+        String regex = "^BK-[0-9]{4}$";
+        Pattern pattern = Pattern.compile(regex);
+        do {
+            System.out.print("Nhập mã Booking(BK-XXXX): ");
+            id = scanner.nextLine();
+            Matcher matcher = pattern.matcher(id);
+            if (matcher.matches()) {
+                return id;
+            } else {
+                System.out.println("Không hợp lệ");
+            }
+        } while (true);
     }
 }

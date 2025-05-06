@@ -1,3 +1,4 @@
-SVPR-2222,phong401,15,100000,3,ngay,be boi
-SVPR-2223,phong404,12,120000,3,ngay,massage
-SVPR-2225,phong409,16,180000,5,ngay,do an
+SVPR-2222,phong401,15,100000,3,ngay,be boi,true,4
+SVPR-2223,phong404,12,120000,3,ngay,massage,false,2
+SVPR-2225,phong409,16,180000,5,ngay,do an,false,1
+SVRO-9876,Phong VIP,200.0,2000000,12,theo ngay,ho boi,false,0

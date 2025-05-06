@@ -6,4 +6,8 @@ import java.util.Map;
 
 public interface IFacilityService {
     Map<Facility, Integer> findAll();
+
+    Facility findById(String id);
+
+    Map<Facility, Integer> findAllMaintenance();
 }

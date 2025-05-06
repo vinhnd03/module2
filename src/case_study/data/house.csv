@@ -1,3 +1,4 @@
-SVHO-1111,Nha 1,20,20000,10,thang,cao cap,2
-SVHO-1121,Nha 2,15,50000,10,thang,cao cap,6
-SVHO-1131,Nha 3,20,20000,10,ngay,trung cap,3
+SVHO-1111,Nha 1,20,20000,10,thang,cao cap,2,false,0
+SVHO-1121,Nha 2,15,50000,10,thang,cao cap,6,false,1
+SVHO-1131,Nha 3,20,20000,10,ngay,trung cap,3,true,3
+SVHO-1232,Nha dep,30.0,200000,12,thang,cao cap,2,false,0

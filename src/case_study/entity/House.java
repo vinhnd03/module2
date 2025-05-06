@@ -13,6 +13,12 @@ public class House extends Facility{
         this.numberOfFloors = numberOfFloors;
     }
 
+    public House(String id, String name, double area, long price, int max, String type, String roomStandard, int numberOfFloors, boolean maintenance) {
+        super(id, name, area, price, max, type, maintenance);
+        this.roomStandard = roomStandard;
+        this.numberOfFloors = numberOfFloors;
+    }
+
     public String getRoomStandard() {
         return roomStandard;
     }
@@ -31,9 +37,15 @@ public class House extends Facility{
 
     @Override
     public String toString() {
-        return "House{" +
+        return "House" +
+                super.toString() +
                 "roomStandard='" + roomStandard + '\'' +
                 ", numberOfFloors=" + numberOfFloors +
-                '}' + super.toString();
+                '}';
+    }
+
+    @Override
+    public String infoToCSVFile() {
+        return super.infoToCSVFile() + "," + roomStandard + "," + numberOfFloors;
     }
 }

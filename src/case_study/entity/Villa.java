@@ -15,6 +15,13 @@ public class Villa extends Facility{
         this.numberOfFloors = numberOfFloors;
     }
 
+    public Villa(String id, String name, double area, long price, int max, String type, String roomStandard, double poolArea, int numberOfFloors, boolean maintenance) {
+        super(id, name, area, price, max, type, maintenance);
+        this.roomStandard = roomStandard;
+        this.poolArea = poolArea;
+        this.numberOfFloors = numberOfFloors;
+    }
+
     public String getRoomStandard() {
         return roomStandard;
     }
@@ -41,10 +48,16 @@ public class Villa extends Facility{
 
     @Override
     public String toString() {
-        return "Villa{" +
+        return "Villa" +
+                super.toString() +
                 "roomStandard='" + roomStandard + '\'' +
                 ", poolArea=" + poolArea +
                 ", numberOfFloors=" + numberOfFloors +
-                '}' + super.toString();
+                '}';
+    }
+
+    @Override
+    public String infoToCSVFile() {
+        return super.infoToCSVFile() + "," + roomStandard + "," + poolArea + "," + numberOfFloors;
     }
 }

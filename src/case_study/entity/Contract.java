@@ -5,7 +5,6 @@ public class Contract {
     private String bookingId;
     private long deposit;
     private long total;
-
     public Contract() {
     }
 

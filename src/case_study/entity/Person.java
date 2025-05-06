@@ -89,7 +89,7 @@ public abstract class Person {
                 ", gender=" + gender +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
-                '}';
+                ", ";
     }
 
     public abstract String infoToCSVFile();

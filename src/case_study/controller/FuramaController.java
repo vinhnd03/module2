@@ -32,7 +32,7 @@ public class FuramaController {
                         FacilityController.facilityMenu();
                         break;
                     case 4:
-                        BookingView.bookingMenu();
+                        BookingController.bookingMenu();
                         break;
                     case 5:
                         View.promotionMenu();

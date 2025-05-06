@@ -1,10 +1,13 @@
 package case_study.entity;
 
-public class Customer extends Person{
+public class Customer extends Person {
     private String rank;
     private String address;
 
-    public Customer(){};
+    public Customer() {
+    }
+
+    ;
 
     public Customer(String id, String name, String birthday, String idCard, boolean gender
             , String phone, String email, String rank, String address) {
@@ -31,10 +34,10 @@ public class Customer extends Person{
 
     @Override
     public String toString() {
-        return "Customer{" +
+        return super.toString() +
                 "type='" + rank + '\'' +
                 ", address='" + address + '\'' +
-                '}' + super.toString();
+                '}';
     }
 
     @Override

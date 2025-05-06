@@ -3,10 +3,11 @@ package case_study.entity;
 public class Booking {
     private String id;
     private String date;
-    private String StartDate;
+    private String startDate;
     private String endDate;
     private String customerId;
     private String serviceId;
+    private boolean complete;
 
     public Booking() {
     }
@@ -14,10 +15,21 @@ public class Booking {
     public Booking(String id, String date, String startDate, String endDate, String customerId, String serviceId) {
         this.id = id;
         this.date = date;
-        StartDate = startDate;
+        this.startDate = startDate;
         this.endDate = endDate;
         this.customerId = customerId;
         this.serviceId = serviceId;
+        this.complete = false;
+    }
+
+    public Booking(String id, String date, String startDate, String endDate, String customerId, String serviceId, boolean complete) {
+        this.id = id;
+        this.date = date;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.customerId = customerId;
+        this.serviceId = serviceId;
+        this.complete = complete;
     }
 
     public String getId() {
@@ -37,11 +49,11 @@ public class Booking {
     }
 
     public String getStartDate() {
-        return StartDate;
+        return startDate;
     }
 
     public void setStartDate(String startDate) {
-        StartDate = startDate;
+        this.startDate = startDate;
     }
 
     public String getEndDate() {
@@ -68,15 +80,28 @@ public class Booking {
         this.serviceId = serviceId;
     }
 
+    public boolean isComplete() {
+        return complete;
+    }
+
+    public void setComplete(boolean complete) {
+        this.complete = complete;
+    }
+
     @Override
     public String toString() {
         return "Booking{" +
                 "id='" + id + '\'' +
                 ", date='" + date + '\'' +
-                ", StartDate='" + StartDate + '\'' +
+                ", StartDate='" + startDate + '\'' +
                 ", endDate='" + endDate + '\'' +
                 ", customerId='" + customerId + '\'' +
                 ", serviceId='" + serviceId + '\'' +
+                ", complete='" + complete + '\'' +
                 '}';
+    }
+
+    public String infoToCSVFile(){
+        return id + "," + date + "," + startDate + "," + endDate + "," + customerId + "," + serviceId + "," + complete;
     }
 }

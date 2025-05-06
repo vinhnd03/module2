@@ -9,6 +9,7 @@ public abstract class Facility {
     private long price;
     private int max;
     private String type;
+    private boolean maintenance;
 
     public Facility() {
     }
@@ -20,6 +21,17 @@ public abstract class Facility {
         this.price = price;
         this.max = max;
         this.type = type;
+        this.maintenance = false;
+    }
+
+    public Facility(String id, String name, double area, long price, int max, String type, boolean maintenance) {
+        this.id = id;
+        this.name = name;
+        this.area = area;
+        this.price = price;
+        this.max = max;
+        this.type = type;
+        this.maintenance = maintenance;
     }
 
     public String getId() {
@@ -70,6 +82,14 @@ public abstract class Facility {
         this.type = type;
     }
 
+    public boolean isMaintenance() {
+        return maintenance;
+    }
+
+    public void setMaintenance(boolean maintenance) {
+        this.maintenance = maintenance;
+    }
+
     @Override
     public String toString() {
         return "{" +
@@ -79,7 +99,8 @@ public abstract class Facility {
                 ", price=" + price +
                 ", max=" + max +
                 ", type='" + type + '\'' +
-                '}';
+                ", maintenance='" + maintenance + '\'' +
+                ", ";
     }
 
     @Override
@@ -94,4 +115,10 @@ public abstract class Facility {
     public int hashCode() {
         return Objects.hash(id, name, area, price, max, type);
     }
+
+    public String infoToCSVFile(){
+        return id + "," + name + "," + area + "," + price + "," + max + "," + type + "," + maintenance;
+    };
+
+
 }
