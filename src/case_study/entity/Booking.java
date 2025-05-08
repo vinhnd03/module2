@@ -1,6 +1,11 @@
 package case_study.entity;
 
-public class Booking {
+import java.time.DateTimeException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Objects;
+
+public class Booking implements Comparable<Booking>{
     private String id;
     private String date;
     private String startDate;
@@ -103,5 +108,34 @@ public class Booking {
 
     public String infoToCSVFile(){
         return id + "," + date + "," + startDate + "," + endDate + "," + customerId + "," + serviceId + "," + complete;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        Booking booking = (Booking) object;
+        return Objects.equals(id, booking.id) && Objects.equals(customerId, booking.customerId) && Objects.equals(serviceId, booking.serviceId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, customerId, serviceId);
+    }
+
+    private LocalDate convertToDate(String date){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        try{
+            return LocalDate.parse(date, formatter);
+        }catch (DateTimeException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+    @Override
+    public int compareTo(Booking o) {
+        LocalDate date1 = convertToDate(o.date);
+        LocalDate date2 = convertToDate(this.date);
+        return date1.compareTo(date2);
     }
 }

@@ -115,13 +115,13 @@ public class ValidateInput {
         String regex = "0\\d{9}$";
         Pattern pattern = Pattern.compile(regex);
         do {
-            System.out.print("Nhập số điện thoại (0XXXXXXXX): ");
+            System.out.print("Nhập số điện thoại (0XXXXXXXXX): ");
             phone = scanner.nextLine();
             Matcher matcher = pattern.matcher(phone);
             if (matcher.matches()) {
                 return phone;
             } else {
-                System.out.println("Yêu cần nhập đúng định dạng số điện thoại");
+                System.out.println("Cần nhập đúng định dạng số điện thoại");
             }
         } while (true);
     }
