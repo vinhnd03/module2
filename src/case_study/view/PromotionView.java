@@ -52,16 +52,17 @@ public class PromotionView {
                 "ID", "Họ và tên", "Ngày sinh", "CCCD", "Giới tính", "Voucher");
         for (Map.Entry<Customer, Integer> entry : customersGetVoucher.entrySet()){
             Customer c = entry.getKey();
-            if(entry.getValue() == 3){
+            if(entry.getValue() == 1){
                 System.out.printf("%-7s | %-20s | %-15s | %-15s | %-10s | %-15s\n",
-                        c.getId(), c.getName(), c.getBirthday(), c.getIdCard(), c.isGender(), "Giảm 50%");
+                        c.getId(), c.getName(), c.getBirthday(), c.getIdCard(), c.isGender() ? "Nam" : "Nữ", "Giảm 10%");
             }else if(entry.getValue() == 2){
                 System.out.printf("%-7s | %-20s | %-15s | %-15s | %-10s | %-15s\n",
-                        c.getId(), c.getName(), c.getBirthday(), c.getIdCard(), c.isGender(), "Giảm 20%");
-            }else if(entry.getValue() == 1){
+                        c.getId(), c.getName(), c.getBirthday(), c.getIdCard(), c.isGender() ? "Nam" : "Nữ", "Giảm 20%");
+            }else if(entry.getValue() == 3){
                 System.out.printf("%-7s | %-20s | %-15s | %-15s | %-10s | %-15s\n",
-                        c.getId(), c.getName(), c.getBirthday(), c.getIdCard(), c.isGender(), "Giảm 10%");
+                        c.getId(), c.getName(), c.getBirthday(), c.getIdCard(), c.isGender() ? "Nam" : "Nữ", "Giảm 50%");
             }
+//System.out.println(entry.getKey() + "," + entry.getValue());
         }
     }
 }

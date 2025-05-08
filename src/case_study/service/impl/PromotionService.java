@@ -25,6 +25,6 @@ public class PromotionService implements IPromotionService {
 
     @Override
     public Map<Customer, Integer> distributeVoucher(int voucher10, int voucher20, int voucher50) {
-        return repositoty.distributeVoucher(voucher20, voucher20, voucher50);
+        return repositoty.distributeVoucher(voucher10, voucher20, voucher50);
     }
 }

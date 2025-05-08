@@ -39,15 +39,16 @@ public class PromotionRepository implements IPromotionRepositoty {
     public Map<Customer, Integer> distributeVoucher(int voucher10, int voucher20, int voucher50) {
         Map<Customer, Integer> map = new LinkedHashMap<>();
         Stack<Customer> stack = getCustomerStack();
-        while (voucher10 > 0 && stack.size() > 0){
+
+        while (voucher10 > 0 && !stack.isEmpty()){
             map.put(stack.pop(), 1);
             voucher10--;
         }
-        while (voucher20 > 0 && stack.size() > 0){
+        while (voucher20 > 0 && !stack.isEmpty()){
             map.put(stack.pop(), 2);
             voucher20--;
         }
-        while (voucher50 > 0 && stack.size() > 0){
+        while (voucher50 > 0 && !stack.isEmpty()){
             map.put(stack.pop(), 3);
             voucher50--;
         }
