@@ -15,13 +15,13 @@ public class CustomerController {
     public static void customerMenu() {
         boolean loop = true;
         do {
-            System.out.println("==========[Customer]=========");
-            System.out.println("1. Display list customers");
-            System.out.println("2. Add new customer");
-            System.out.println("3. Edit customer");
-            System.out.println("4. Return main menu");
-            System.out.println("=============================");
-            System.out.print("Your choice: ");
+            System.out.println("==========[Khách hàng]=========");
+            System.out.println("1. Danh sách khách hàng");
+            System.out.println("2. Thêm khách hàng mới");
+            System.out.println("3. Chỉnh sửa khách hàng");
+            System.out.println("4. Trờ về menu chính");
+            System.out.println("===============================");
+            System.out.print("Lựa chọn: ");
             try {
                 int choice = Integer.parseInt(scanner.nextLine());
                 switch (choice) {
@@ -47,10 +47,10 @@ public class CustomerController {
                         loop = false;
                         break;
                     default:
-                        System.out.println("Invalid");
+                        System.out.println("Không hợp lệ");
                 }
             }catch (NumberFormatException e){
-                System.out.println("Invalid number format");
+                System.out.println("Sai định dạng số");
             }
         } while (loop);
     }

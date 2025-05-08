@@ -35,11 +35,13 @@ public class RoomRepository implements IRoomRepository {
     @Override
     public void edit(Map.Entry<Facility, Integer> facilityEntry) {
         Map<Room, Integer> roomMap = findAll();
-        roomMap.replace((Room) facilityEntry.getKey(), facilityEntry.getValue());
+        roomMap.remove((Room) facilityEntry.getKey());
+        roomMap.put((Room) facilityEntry.getKey(), facilityEntry.getValue());
         List<String> stringList = new ArrayList<>();
         for(Map.Entry<Room, Integer> entry : roomMap.entrySet()){
             stringList.add(entry.getKey().infoToCSVFile() + "," + entry.getValue());
         }
         ReadAndWriteFile.writeFileCSV(PATH, stringList, false);
     }
+
 }

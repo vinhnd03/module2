@@ -34,6 +34,6 @@ public class Room extends Facility{
 
     @Override
     public String infoToCSVFile() {
-        return super.infoToCSVFile() + "," + freeService;
+        return super.infoToCSVFile() + "," + freeService+ "," + super.isMaintenance();
     }
 }

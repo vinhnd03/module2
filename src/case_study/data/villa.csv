@@ -1,4 +1,4 @@
-SVVL-3343,Villa2023,50,4000000,6,nam,cao cap,20,2,false,1
-SVVL-3342,Villa2025,45,3000000,7,nam,cao cap,20,2,false,0
-SVVL-3345,Villa2024,40,5000000,8,nam,trung binh,20,2,false,1
-SVVL-9999,Villa Sieu Cap,34.0,200000,14,nam,cao cap,34.0,3,true,0
+SVVL-3343,Villa2023,50.0,4000000,6,nam,cao cap,20.0,2,false,1
+SVVL-3342,Villa2025,45.0,3000000,7,nam,cao cap,20.0,2,true,0
+SVVL-9999,Villa Sieu Cap,34.0,200000,14,nam,cao cap,34.0,3,true,2
+SVVL-3345,Villa2024,40.0,5000000,8,nam,trung binh,20.0,2,true,0

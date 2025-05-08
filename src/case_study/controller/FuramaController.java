@@ -10,14 +10,14 @@ public class FuramaController {
     public static int displayMainMenu() {
         do {
             System.out.println("================== [ FURAMA ] ==================");
-            System.out.println("1.  Employee Management.");
-            System.out.println("2.  Customer Management.");
-            System.out.println("3.  Facility Management.");
-            System.out.println("4.  Booking Management.");
-            System.out.println("5.  Promotion Management.");
-            System.out.println("6.  Exit");
+            System.out.println("1.  Quản lý nhân viên.");
+            System.out.println("2.  Quản lý khách hàng.");
+            System.out.println("3.  Quản lý dịch vụ.");
+            System.out.println("4.  Quản lý booking.");
+            System.out.println("5.  Quản lý khuyến mãi.");
+            System.out.println("6.  Thoát");
             System.out.println("================================================");
-            System.out.print("Your choice: ");
+            System.out.print("Lựa chọn: ");
 
             try {
                 int choice = Integer.parseInt(scanner.nextLine());
@@ -35,17 +35,18 @@ public class FuramaController {
                         BookingController.bookingMenu();
                         break;
                     case 5:
-                        View.promotionMenu();
+                        PromotionController.promotionMenu();
                         break;
                     case 6:
-                        System.out.println("Goodbye");
+                        System.out.println("Chào tạm biệt");
                         System.exit(0);
                     default:
-                        System.out.println("Invalid");
+                        System.out.println("Không hợp lệ");
                         break;
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Invalid number format");
+                System.out.println("Sai định dạng số");
+                e.printStackTrace();
             }
 
 

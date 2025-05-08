@@ -23,57 +23,60 @@ public class FacilityController {
     private static VillaService villaService = new VillaService();
 
     public static void facilityMenu() {
+
         boolean loop = true;
         do {
-            System.out.println("==========[Facility]=========");
-            System.out.println("1. Display list facilities");
-            System.out.println("2. Add new facility");
-            System.out.println("3. Display list facility maintenance");
-            System.out.println("4. Return main menu");
+            System.out.println("==========[Dịch vụ]=========");
+            System.out.println("1. Danh sách dịch vụ");
+            System.out.println("2. Thêm dịch vụ mới");
+            System.out.println("3. Danh sách dịch vụ bảo trì");
+            System.out.println("4. Trờ về menu chính");
             System.out.println("=============================");
-            System.out.print("Your choice: ");
-            int choice = Integer.parseInt(scanner.nextLine());
-
-            switch (choice) {
-                case 1:
-                    System.out.println("1. Display list facilities");
-                    displayList();
-                    break;
-                case 2:
-                    System.out.println("2. Add new facility");
-                    add();
-                    break;
-                case 3:
-                    System.out.println("3. Display list facility maintenance");
-                    displayMaintenanceList();
-                    break;
-                case 4:
-                    loop = false;
-                    break;
-                default:
-                    System.out.println("Invalid");
+            System.out.print("Lựa chọn: ");
+            int choice;
+            try {
+                choice = Integer.parseInt(scanner.nextLine());
+                switch (choice) {
+                    case 1:
+                        System.out.println("1. Danh sách dịch vụ");
+                        displayList();
+                        break;
+                    case 2:
+                        System.out.println("2. Thêm dịch vụ mới");
+                        add();
+                        break;
+                    case 3:
+                        System.out.println("3. Danh sách dịch vụ bảo trì");
+                        displayMaintenanceList();
+                        break;
+                    case 4:
+                        loop = false;
+                        break;
+                    default:
+                        System.out.println("Không hợp lệ");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Sai định dạng số");
             }
-
         } while (loop);
     }
 
-    private static void displayList(){
+    private static void displayList() {
         Map<Facility, Integer> facilityMap = facilityservice.findAll();
         FacilityView.displayFacilityList(facilityMap);
     }
 
 
-
-    private static void add(){
+    private static void add() {
         boolean loop = true;
         do {
-            System.out.println("==========[Add Facility]=========");
+            System.out.println("==========[Thêm mới]=========");
             System.out.println("1. New House");
             System.out.println("2. New Room");
             System.out.println("3. New Villa");
-            System.out.println("4. Return");
+            System.out.println("4. Trở về");
             System.out.println("=================================");
-            System.out.print("Your choice: ");
+            System.out.print("Lựa chọn: ");
             int choice = Integer.parseInt(scanner.nextLine());
 
             switch (choice) {
@@ -96,13 +99,13 @@ public class FacilityController {
                     loop = false;
                     break;
                 default:
-                    System.out.println("Invalid");
+                    System.out.println("Không hợp lệ");
             }
 
         } while (loop);
     }
 
-    private static void displayMaintenanceList(){
+    private static void displayMaintenanceList() {
         Map<Facility, Integer> facilityMap = facilityservice.findAllMaintenance();
         FacilityView.displayFacilityList(facilityMap);
     }

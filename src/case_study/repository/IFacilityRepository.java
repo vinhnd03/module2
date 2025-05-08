@@ -14,4 +14,6 @@ public interface IFacilityRepository {
     Map.Entry<Facility, Integer> findMapByKey(Facility facility);
 
     void editMap(Map.Entry<Facility, Integer> facility);
+
+    Map<Facility, Integer> findAllAvailableFacility();
 }

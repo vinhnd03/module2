@@ -15,13 +15,13 @@ public class EmployeeController {
     public static void employeeMenu() {
         boolean loop = true;
         do {
-            System.out.println("==========[Employee]=========");
-            System.out.println("1. Display list employees");
-            System.out.println("2. Add new employee");
-            System.out.println("3. Edit employee");
-            System.out.println("4. Return main menu");
-            System.out.println("=============================");
-            System.out.print("Your choice: ");
+            System.out.println("==========[Nhân viên]=========");
+            System.out.println("1. Danh sách nhân viên");
+            System.out.println("2. Thêm mới nhân viên");
+            System.out.println("3. Chỉnh sửa nhân viên");
+            System.out.println("4. Trở về menu chính");
+            System.out.println("==============================");
+            System.out.print("Lựa chọn: ");
             try {
                 int choice = Integer.parseInt(scanner.nextLine());
                 switch (choice) {
@@ -47,10 +47,10 @@ public class EmployeeController {
                         loop = false;
                         break;
                     default:
-                        System.out.println("Invalid");
+                        System.out.println("Không hợp lệ");
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Invalid number format");
+                System.out.println("Vui lòng nhập đúng định dạng số");
             }
         } while (loop);
     }

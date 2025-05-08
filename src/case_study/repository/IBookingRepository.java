@@ -11,4 +11,8 @@ public interface IBookingRepository {
     List<Booking> findAll();
 
     Queue<Booking> findIncompleteBooking();
+
+    Booking findById(String bookingId);
+
+    void edit(Booking booking);
 }

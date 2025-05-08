@@ -1,5 +1,7 @@
 package case_study.entity;
 
+import java.util.Objects;
+
 public class Contract {
     private int contractNumber;
     private String bookingId;
@@ -55,5 +57,22 @@ public class Contract {
                 ", deposit=" + deposit +
                 ", total=" + total +
                 '}';
+    }
+
+    public String getInfoToCSVFile(){
+        return contractNumber + "," + bookingId + "," + deposit + "," + total;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        Contract contract = (Contract) object;
+        return contractNumber == contract.contractNumber && Objects.equals(bookingId, contract.bookingId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(contractNumber, bookingId);
     }
 }

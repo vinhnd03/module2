@@ -1,6 +1,8 @@
 package case_study.repository.impl;
 
 import case_study.common.ReadAndWriteFile;
+import case_study.entity.Facility;
+import case_study.entity.House;
 import case_study.entity.Villa;
 import case_study.repository.IVillaRepository;
 
@@ -29,5 +31,17 @@ public class VillaRepository implements IVillaRepository {
         List<String> stringList = new ArrayList<>();
         stringList.add(villa.infoToCSVFile() + ",0");
         ReadAndWriteFile.writeFileCSV(PATH, stringList, true);
+    }
+
+    @Override
+    public void edit(Map.Entry<Facility, Integer> facilityEntry) {
+        Map<Villa, Integer> villamap = findAll();
+        villamap.remove((Villa) facilityEntry.getKey());
+        villamap.put((Villa) facilityEntry.getKey(), facilityEntry.getValue());
+        List<String> stringList = new ArrayList<>();
+        for(Map.Entry<Villa, Integer> entry : villamap.entrySet()){
+            stringList.add(entry.getKey().infoToCSVFile() + "," + entry.getValue());
+        }
+        ReadAndWriteFile.writeFileCSV(PATH, stringList, false);
     }
 }

@@ -10,4 +10,6 @@ public interface IFacilityService {
     Facility findById(String id);
 
     Map<Facility, Integer> findAllMaintenance();
+
+    Map<Facility, Integer> findAllAvailableFacility();
 }

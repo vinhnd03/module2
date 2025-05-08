@@ -117,7 +117,7 @@ public abstract class Facility {
     }
 
     public String infoToCSVFile(){
-        return id + "," + name + "," + area + "," + price + "," + max + "," + type + "," + maintenance;
+        return id + "," + name + "," + area + "," + price + "," + max + "," + type;
     };
 
 

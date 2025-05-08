@@ -46,6 +46,6 @@ public class House extends Facility{
 
     @Override
     public String infoToCSVFile() {
-        return super.infoToCSVFile() + "," + roomStandard + "," + numberOfFloors;
+        return super.infoToCSVFile() + "," + roomStandard + "," + numberOfFloors+ "," + super.isMaintenance();
     }
 }

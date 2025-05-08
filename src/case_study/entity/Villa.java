@@ -58,6 +58,6 @@ public class Villa extends Facility{
 
     @Override
     public String infoToCSVFile() {
-        return super.infoToCSVFile() + "," + roomStandard + "," + poolArea + "," + numberOfFloors;
+        return super.infoToCSVFile() + "," + roomStandard + "," + poolArea + "," + numberOfFloors + "," + super.isMaintenance();
     }
 }

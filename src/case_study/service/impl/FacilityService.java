@@ -24,4 +24,9 @@ public class FacilityService implements IFacilityService {
     public Map<Facility, Integer> findAllMaintenance() {
         return repository.findAllMaintenance();
     }
+
+    @Override
+    public Map<Facility, Integer> findAllAvailableFacility() {
+        return repository.findAllAvailableFacility();
+    }
 }

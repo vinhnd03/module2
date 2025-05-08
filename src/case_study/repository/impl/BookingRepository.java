@@ -24,6 +24,10 @@ public class BookingRepository implements IBookingRepository {
         Facility facility = facilityRepository.findById(booking.getServiceId());
         Map.Entry<Facility, Integer> entry = facilityRepository.findMapByKey(facility);
         entry.setValue(entry.getValue() + 1);
+        if(entry.getValue() >= 5){
+            entry.getKey().setMaintenance(true);
+            entry.setValue(0);
+        }
         facilityRepository.editMap(entry);
         ReadAndWriteFile.writeFileCSV(PATH, stringList, true);
     }
@@ -60,6 +64,29 @@ public class BookingRepository implements IBookingRepository {
             }
         }
         return bookingQueue;
+    }
+
+    @Override
+    public Booking findById(String bookingId) {
+        for(Booking booking : findAll()){
+            if(booking.getId().equals(bookingId)){
+                return booking;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public void edit(Booking booking) {
+        List<String> stringList = new ArrayList<>();
+        List<Booking> bookingList = findAll();
+        for (int i = 0; i < bookingList.size(); i++) {
+            if(bookingList.get(i).getId().equals(booking.getId())){
+                bookingList.set(i, booking);
+            }
+            stringList.add(bookingList.get(i).infoToCSVFile());
+        }
+        ReadAndWriteFile.writeFileCSV(PATH, stringList, false);
     }
 
     private LocalDate convertToDate(String dateStr){

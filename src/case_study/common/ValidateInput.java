@@ -1,7 +1,12 @@
 package case_study.common;
 
+import case_study.view.CustomerView;
+import case_study.view.EmployeeView;
+import case_study.view.FacilityView;
+
 import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -15,7 +20,7 @@ public class ValidateInput {
         Pattern pattern = Pattern.compile(regex);
         String name;
         do {
-            System.out.print("Nhập tên: ");
+            System.out.print("Nhập tên (Nguyen Van A): ");
             name = scanner.nextLine().trim();
             Matcher matcher = pattern.matcher(name);
 
@@ -32,7 +37,7 @@ public class ValidateInput {
         String regex = "NV-[0-9]{4}$";
         Pattern pattern = Pattern.compile(regex);
         do {
-            System.out.print("Nhập id nhân viên: ");
+            System.out.print("Nhập id nhân viên (NV-XXXX): ");
             id = scanner.nextLine().trim();
             Matcher matcher = pattern.matcher(id);
 
@@ -50,7 +55,7 @@ public class ValidateInput {
         String regex = "\\d{2}-\\d{2}-\\d{4}$";
         Pattern pattern = Pattern.compile(regex);
         do {
-            System.out.print("Nhập " + type + ": ");
+            System.out.print("Nhập " + type + " (dd-MM-yyyy): ");
             date = scanner.nextLine().trim();
             Matcher matcher = pattern.matcher(date);
             if (matcher.matches() && isValidDate(date)) {
@@ -67,7 +72,7 @@ public class ValidateInput {
         Pattern pattern = Pattern.compile(regex);
 
         do {
-            System.out.print("Nhập CMND: ");
+            System.out.print("Nhập CMND (XXXXXXXXX(XXX)): ");
             idCard = scanner.nextLine().trim();
             Matcher matcher = pattern.matcher(idCard);
             if (matcher.matches()) {
@@ -110,7 +115,7 @@ public class ValidateInput {
         String regex = "0\\d{9}$";
         Pattern pattern = Pattern.compile(regex);
         do {
-            System.out.print("Nhập số điện thoại: ");
+            System.out.print("Nhập số điện thoại (0XXXXXXXX): ");
             phone = scanner.nextLine();
             Matcher matcher = pattern.matcher(phone);
             if (matcher.matches()) {
@@ -126,7 +131,7 @@ public class ValidateInput {
         String regex = "[\\w.+-]+@[\\w.+-]+\\.[\\w.+-]{2,}$";
         Pattern pattern = Pattern.compile(regex);
         do {
-            System.out.print("Nhập email: ");
+            System.out.print("Nhập email (example@gmail.com): ");
             email = scanner.nextLine();
             Matcher matcher = pattern.matcher(email);
             if (matcher.matches()) {
@@ -153,7 +158,7 @@ public class ValidateInput {
         String regex = "KH-[0-9]{4}$";
         Pattern pattern = Pattern.compile(regex);
         do {
-            System.out.print("Nhập id khách hàng: ");
+            System.out.print("Nhập id khách hàng (KH-XXXX): ");
             id = scanner.nextLine().trim();
             Matcher matcher = pattern.matcher(id);
 
@@ -219,7 +224,7 @@ public class ValidateInput {
             try {
                 System.out.print("Nhập diện tích: ");
                 area = Double.parseDouble(scanner.nextLine());
-                if(area < 30){
+                if (area < 30) {
                     System.out.println("Diện tích phải lớn hơn 30");
                 }
             } catch (NumberFormatException e) {
@@ -232,14 +237,14 @@ public class ValidateInput {
 
     public static long inputPrice() {
         long price = 0;
-        while (price < 1){
-            try{
+        while (price < 1) {
+            try {
                 System.out.print("Nhập giá thuê: ");
                 price = Long.parseLong(scanner.nextLine());
-                if(price < 1){
+                if (price < 1) {
                     System.out.println("Giá thuê phải lớn hơn 0");
                 }
-            }catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 System.out.println("Nhập sai định dạng số.");
             }
         }
@@ -248,14 +253,14 @@ public class ValidateInput {
 
     public static int inputMaxPeople() {
         int max = 0;
-        while (max < 1 || max > 20){
+        while (max < 1 || max > 20) {
             try {
                 System.out.print("Nhập số người tối đa: ");
                 max = Integer.parseInt(scanner.nextLine());
-                if(max < 1 || max > 20){
+                if (max < 1 || max > 20) {
                     System.out.println("Số người tối thiểu là 1 và tối đa là 0");
                 }
-            }catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 System.out.println("Nhập sai định dạng số");
             }
         }
@@ -264,14 +269,14 @@ public class ValidateInput {
 
     public static int inputNumberOfFloors() {
         int numberOfFloors = 0;
-        while (numberOfFloors < 1){
+        while (numberOfFloors < 1) {
             try {
                 System.out.print("Nhập số tầng: ");
                 numberOfFloors = Integer.parseInt(scanner.nextLine());
-                if(numberOfFloors < 1){
+                if (numberOfFloors < 1) {
                     System.out.println("Số tầng phải là số dương");
                 }
-            }catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 System.out.println("Nhập sai định dạng");
             }
         }
@@ -300,7 +305,7 @@ public class ValidateInput {
             try {
                 System.out.print("Nhập diện tích hồ bơi: ");
                 area = Double.parseDouble(scanner.nextLine());
-                if(area < 30){
+                if (area < 30) {
                     System.out.println("Diện tích phải lớn hơn 30");
                 }
             } catch (NumberFormatException e) {
@@ -324,5 +329,86 @@ public class ValidateInput {
                 System.out.println("Không hợp lệ");
             }
         } while (true);
+    }
+
+    public static String inputEmployeeDate() {
+        String date;
+        String regex = "\\d{2}-\\d{2}-\\d{4}$";
+        Pattern pattern = Pattern.compile(regex);
+        do {
+            System.out.print("Nhập ngày sinh nhân viên (dd-MM-yyyy): ");
+            date = scanner.nextLine().trim();
+            Matcher matcher = pattern.matcher(date);
+            if (matcher.matches() && isValidDate(date)) {
+                if (checkAge(date)) {
+                    return date;
+                } else {
+                    System.out.println("Nhân viên phải đủ 18 tuổi");
+                }
+            } else {
+                System.out.println("Không hợp lệ");
+            }
+        } while (true);
+    }
+
+    private static boolean checkAge(String dateStr) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        try {
+            LocalDate birthday = LocalDate.parse(dateStr, formatter);
+            LocalDate today = LocalDate.now();
+            Period age = Period.between(birthday, today);
+            return age.getYears() >= 18;
+        } catch (DateTimeException e) {
+            return false;
+        }
+    }
+
+    public static String inputPosition() {
+        int chon;
+        do {
+            chon = EmployeeView.selectPosition();
+            if (chon < 1 || chon > 6) {
+                System.out.println("Không hợp lệ. Chọn lại");
+            }
+        } while (chon < 1 || chon > 6);
+
+        String[] positions = {"Lễ Tân", "Phục vụ", "Chuyên viên", "Giám sát", "Quản lý", "Giám đốc"};
+        return positions[chon - 1];
+    }
+
+    public static String inputQualification() {
+        int chon;
+        do {
+            chon = EmployeeView.selectQualification();
+            if (chon < 1 || chon > 4) {
+                System.out.println("Không hợp lệ. Chọn lại");
+            }
+        } while (chon < 1 || chon > 4);
+        String[] qualifications = {"Trung cấp", "Cao đẳng", "Đại học", "Sau đại học"};
+        return qualifications[chon - 1];
+    }
+
+    public static String inputRank() {
+        int chon;
+        do {
+            chon = CustomerView.selectRank();
+            if (chon < 1 || chon > 5) {
+                System.out.println("Không hợp lệ. Chọn lại");
+            }
+        } while (chon < 1 || chon > 5);
+        String[] ranks = {"Thành viên", "Bạc", "Vàng", "Bạch kim", "Kim cương"};
+        return ranks[chon - 1];
+    }
+
+    public static String inputRentType() {
+        int chon;
+        do {
+            chon = FacilityView.selectRentType();
+            if (chon < 1 || chon > 4) {
+                System.out.println("Không hợp lệ. Chọn lại");
+            }
+        } while (chon < 1 || chon > 4);
+        String[] rentTypes = {"Giờ", "Ngày", "Tháng", "Năm"};
+        return rentTypes[chon - 1];
     }
 }

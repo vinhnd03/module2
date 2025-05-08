@@ -37,13 +37,13 @@ public class HouseRepository implements IHouseRepository {
     @Override
     public void edit(Map.Entry<Facility, Integer> facilityEntry) {
         Map<House, Integer> houseMap = findAll();
-        houseMap.replace((House) facilityEntry.getKey(), facilityEntry.getValue());
+        houseMap.remove(facilityEntry.getKey());
+        houseMap.put((House) facilityEntry.getKey(), facilityEntry.getValue());
         List<String> stringList = new ArrayList<>();
         for(Map.Entry<House, Integer> entry : houseMap.entrySet()){
             stringList.add(entry.getKey().infoToCSVFile() + "," + entry.getValue());
         }
         ReadAndWriteFile.writeFileCSV(PATH, stringList, false);
     }
-
 
 }
