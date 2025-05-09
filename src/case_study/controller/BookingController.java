@@ -69,8 +69,8 @@ public class BookingController {
             System.out.println("Hợp đồng không tồn tại");
             return;
         }
-        Contract editedContract = ContractView.editContract(contract);
-        contractService.edit(editedContract);
+        ContractView.editContract(contract);
+        contractService.edit(contract);
         System.out.println("Cập nhật thành công");
     }
 

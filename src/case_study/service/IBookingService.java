@@ -11,4 +11,6 @@ public interface IBookingService {
     List<Booking> findAll();
 
     Queue<Booking> findIncompleteBooking();
+
+    Booking findById(String id);
 }

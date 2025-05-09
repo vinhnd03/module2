@@ -1,5 +1,6 @@
 package case_study.view;
 
+import case_study.common.ValidateInput;
 import case_study.entity.Customer;
 
 import java.util.Map;
@@ -11,8 +12,7 @@ public class PromotionView {
     private static Scanner scanner = new Scanner(System.in);
 
     public static String inputYear() {
-        System.out.print("Nhập năm cần lấy dữ liệu: ");
-        return scanner.nextLine();
+        return ValidateInput.inputYear();
     }
 
     public static void displayCustomersUseService(Set<Customer> customers) {

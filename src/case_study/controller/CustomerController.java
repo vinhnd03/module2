@@ -37,8 +37,8 @@ public class CustomerController {
                         String customerId = CustomerView.inputCustomerId();
                         Customer foundCustomer = customerService.findById(customerId);
                         if(foundCustomer != null){
-                            Customer editedCustomer = CustomerView.editCustomer(foundCustomer);
-                            customerService.update(editedCustomer);
+                            CustomerView.editCustomer(foundCustomer);
+                            customerService.update(foundCustomer);
                         }else{
                             System.out.println("Không tìm thấy khách hàng có id là: " + customerId);
                         }

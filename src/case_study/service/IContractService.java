@@ -11,4 +11,6 @@ public interface IContractService {
     Contract findByContractNumber(int contractNumber);
 
     void edit(Contract contract);
+
+    Contract findById(int contractNumber);
 }

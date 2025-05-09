@@ -25,4 +25,9 @@ public class BookingService implements IBookingService {
     public Queue<Booking> findIncompleteBooking() {
         return repository.findIncompleteBooking();
     }
+
+    @Override
+    public Booking findById(String id) {
+        return repository.findById(id);
+    }
 }

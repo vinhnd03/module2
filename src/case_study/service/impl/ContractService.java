@@ -29,4 +29,9 @@ public class ContractService implements IContractService {
     public void edit(Contract contract) {
         repository.edit(contract);
     }
+
+    @Override
+    public Contract findById(int contractNumber) {
+        return repository.findByContractNumber(contractNumber);
+    }
 }

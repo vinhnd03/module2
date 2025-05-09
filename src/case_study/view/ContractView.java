@@ -1,5 +1,6 @@
 package case_study.view;
 
+import case_study.common.ValidateInput;
 import case_study.entity.Contract;
 
 import java.util.Scanner;
@@ -9,8 +10,7 @@ public class ContractView {
     private static Scanner scanner = new Scanner(System.in);
 
     public static Contract inputContractInfo(String bookingId) {
-        System.out.print("Nhập số hợp đồng: ");
-        int number = Integer.parseInt(scanner.nextLine());
+        int number = ValidateInput.inputContractNumber();
         System.out.print("Nhập số tiền cọc: ");
         long deposit = Long.parseLong(scanner.nextLine());
         System.out.print("Nhập tổng số tiền: ");

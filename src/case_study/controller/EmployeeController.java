@@ -39,8 +39,8 @@ public class EmployeeController {
                         if (foundEmployee == null) {
                             System.out.println("Nhân viên không tồn tại");
                         } else {
-                            Employee editedEmployee = EmployeeView.editEmployee(foundEmployee);
-                            employeeService.update(editedEmployee);
+                            EmployeeView.editEmployee(foundEmployee);
+                            employeeService.update(foundEmployee);
                         }
                         break;
                     case 4:

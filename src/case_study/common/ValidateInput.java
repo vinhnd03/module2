@@ -1,5 +1,8 @@
 package case_study.common;
 
+import case_study.entity.*;
+import case_study.service.*;
+import case_study.service.impl.*;
 import case_study.view.CustomerView;
 import case_study.view.EmployeeView;
 import case_study.view.FacilityView;
@@ -8,12 +11,20 @@ import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ValidateInput {
     private static Scanner scanner = new Scanner(System.in);
+    private static ICustomerService customerService = new CustomerService();
+    private static IEmployeeService employeeService = new EmployeeService();
+    private static IBookingService bookingService = new BookingService();
+    private static IFacilityService facilityService = new FacilityService();
+    private static IContractService contractService = new ContractService();
 
     public static String inputName() {
         String regex = "^([A-Z][a-z]+)(\\s[A-Z][a-z]+)*$";
@@ -36,10 +47,15 @@ public class ValidateInput {
         String id;
         String regex = "NV-[0-9]{4}$";
         Pattern pattern = Pattern.compile(regex);
+        List<Employee> employees = employeeService.findAll();
         do {
             System.out.print("Nhập id nhân viên (NV-XXXX): ");
             id = scanner.nextLine().trim();
             Matcher matcher = pattern.matcher(id);
+            if(employees.contains(employeeService.findById(id))){
+                System.out.println("Mã nhân viên đã tồn tại");
+                continue;
+            }
 
             if (matcher.matches()) {
                 return id;
@@ -157,10 +173,16 @@ public class ValidateInput {
         String id;
         String regex = "KH-[0-9]{4}$";
         Pattern pattern = Pattern.compile(regex);
+        List<Customer> customers = customerService.findAll();
         do {
             System.out.print("Nhập id khách hàng (KH-XXXX): ");
             id = scanner.nextLine().trim();
             Matcher matcher = pattern.matcher(id);
+
+            if(customers.contains(customerService.findById(id))){
+                System.out.println("Mã khách hàng đã tồn tại");
+                continue;
+            }
 
             if (matcher.matches()) {
                 return id;
@@ -174,10 +196,18 @@ public class ValidateInput {
         String id;
         String regex = "^SVHO-[0-9]{4}$";
         Pattern pattern = Pattern.compile(regex);
+        Map<Facility, Integer> facilityrMap = facilityService.findAll();
+
         do {
             System.out.print("Nhập mã House(SVHO-XXXX): ");
             id = scanner.nextLine();
             Matcher matcher = pattern.matcher(id);
+
+            if(facilityrMap.containsKey(facilityService.findById(id))){
+                System.out.println("Mã dịch vụ đã tồn tại");
+                continue;
+            }
+
             if (matcher.matches()) {
                 return id;
             } else {
@@ -190,10 +220,15 @@ public class ValidateInput {
         String id;
         String regex = "^SVRO-[0-9]{4}$";
         Pattern pattern = Pattern.compile(regex);
+        Map<Facility, Integer> facilityrMap = facilityService.findAll();
         do {
             System.out.print("Nhập mã Room(SVRO-XXXX): ");
             id = scanner.nextLine();
             Matcher matcher = pattern.matcher(id);
+            if(facilityrMap.containsKey(facilityService.findById(id))){
+                System.out.println("Mã dịch vụ đã tồn tại");
+                continue;
+            }
             if (matcher.matches()) {
                 return id;
             } else {
@@ -287,10 +322,15 @@ public class ValidateInput {
         String id;
         String regex = "^SVVL-[0-9]{4}$";
         Pattern pattern = Pattern.compile(regex);
+        Map<Facility, Integer> facilityrMap = facilityService.findAll();
         do {
             System.out.print("Nhập mã Villa(SVVL-XXXX): ");
             id = scanner.nextLine();
             Matcher matcher = pattern.matcher(id);
+            if(facilityrMap.containsKey(facilityService.findById(id))){
+                System.out.println("Mã dịch vụ đã tồn tại");
+                continue;
+            }
             if (matcher.matches()) {
                 return id;
             } else {
@@ -319,9 +359,14 @@ public class ValidateInput {
         String id;
         String regex = "^BK-[0-9]{4}$";
         Pattern pattern = Pattern.compile(regex);
+        List<Booking> bookings = bookingService.findAll();
         do {
             System.out.print("Nhập mã Booking(BK-XXXX): ");
             id = scanner.nextLine();
+            if(bookings.contains(bookingService.findById(id))){
+                System.out.println("Mã booking đã tồn tại");
+                continue;
+            }
             Matcher matcher = pattern.matcher(id);
             if (matcher.matches()) {
                 return id;
@@ -410,5 +455,32 @@ public class ValidateInput {
         } while (chon < 1 || chon > 4);
         String[] rentTypes = {"Giờ", "Ngày", "Tháng", "Năm"};
         return rentTypes[chon - 1];
+    }
+
+    public static String inputYear() {
+        String year;
+        do {
+            System.out.print("Nhập năm cần lấy dữ liệu: ");
+            year = scanner.nextLine();
+            if(year.length() != 4){
+                System.out.println("Năm không hợp lệ");
+            }else{
+                return year;
+            }
+        }while (true);
+    }
+
+    public static int inputContractNumber() {
+        int contractNumber;
+        Set<Contract> contractSet = contractService.findAll();
+        do{
+            System.out.print("Nhập số hợp đồng: ");
+            contractNumber = Integer.parseInt(scanner.nextLine());
+            if(contractSet.contains(contractService.findById(contractNumber))){
+                System.out.println("Số hợp đồng đã tồn tại");
+            }else{
+                return contractNumber;
+            }
+        }while (true);
     }
 }
